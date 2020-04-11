@@ -11,8 +11,9 @@ OGs<-fromJSON(file='https://www.orthodb.org//search?level=7742&universal=0.9&sin
 for(OG in OGs$data[1:3]){
   #Sauropsida - taxid:8457   
   url<-paste("http://www.orthodb.org/fasta?id=",OG,"&species=","8457",sep="")
-  seq<-readAAStringSet(open_input_files(url))
-  cat(url)
+  f<-open_input_files(url)
+  seq<-readAAStringSet(f)
+  cat(f)
   writeXStringSet(seq, "Sauropsida.fa", append=TRUE)
   #Mammalia - taxid:40674 
   url<-paste("http://www.orthodb.org/fasta?id=",OG,"&species=","40674",sep="")
