@@ -13,7 +13,7 @@ for(OG in OGs$data[1:3]){
   url<-paste("http://www.orthodb.org/fasta?id=",OG,"&species=","8457",sep="")
   f<-open_input_files(url)
   seq<-readAAStringSet(f)
-  cat(f)
+  f
   writeXStringSet(seq, "Sauropsida.fa", append=TRUE)
   #Mammalia - taxid:40674 
   url<-paste("http://www.orthodb.org/fasta?id=",OG,"&species=","40674",sep="")
