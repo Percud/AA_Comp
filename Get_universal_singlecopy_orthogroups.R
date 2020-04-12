@@ -13,10 +13,11 @@ Tax=list(id=c(8457,40674,7898),name=c("Sauropsida","Mammalia","Actinopterygii"))
 for(OG in OGs$data[1:3]){
   for(i in 1:NROW(Tax$id)){
     URL<-paste("http://www.orthodb.org/fasta?id=",OG,"&species=",Tax$id[i],sep="")
+    cat(URL)
     apiResult<-GET(URL)
     file_name<-paste(Tax$name[i],"fa",sep=".")
     write(content(apiResult,"text"), file=file_name, append=TRUE)
-    Sys.sleep(1)
+    Sys.sleep(20)
   }
 }
 
