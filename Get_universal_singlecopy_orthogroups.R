@@ -15,8 +15,8 @@ for(OG in OGs$data[1:3]){
     URL<-paste("http://www.orthodb.org/fasta?id=",OG,"&species=",Tax$id[i],sep="")
     apiResult<-GET(URL)
     file_name<-paste(Tax$id[i],"fa",sep=".")
-    write(apiResult, file=file_name, append=TRUE)
-    Sys.sleep(10)
+    write(content(apiResult,"text"), file=file_name, append=TRUE)
+    Sys.sleep(1)
   }
 }
 
