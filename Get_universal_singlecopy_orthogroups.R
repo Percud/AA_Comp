@@ -16,7 +16,7 @@ for(OG in OGs$data[1:3]){
     cat(URL,"\n")
     apiResult<-GET(URL)
     file_name<-paste(Tax$name[i],"fa",sep=".")
-    write(apiResult, file=file_name, append=TRUE)
+    write(content(apiResult,"text"), file=file_name, append=TRUE)
     #Sys.sleep(0.1)
   }
 }
