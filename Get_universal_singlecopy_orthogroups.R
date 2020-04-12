@@ -13,7 +13,7 @@ for(OG in OGs$data[1:3]){
   for(i in 1:NROW(Tax$id)){
     URL<-paste("http://www.orthodb.org/fasta?id=",OG,"&species=",Tax$id[i],sep="")
     cat(URL,"\n")
-    out<-system2("wget ",args=c(" -q -O - ",URL),stdout=TRUE)
+    out<-system2("wget",args=c(" -q -O - ",URL),stdout=TRUE)
     file_name<-paste(Tax$name[i],"fa",sep=".")
     write(out, file=file_name, append=TRUE)
     Sys.sleep(0.1)
