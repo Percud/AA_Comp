@@ -10,7 +10,7 @@ OGs<-fromJSON(file='https://www.orthodb.org//search?level=7742&universal=0.9&sin
 
 Tax=list(id=c(8457,40674,7898),name=c("Sauropsida","Mammalia","Actinopterygii"))
 
-for(OG in OGs$data[3185:3194]){
+for(OG in OGs$data){
   for(i in 1:NROW(Tax$id)){
     URL<-paste("http://V101.orthodb.org/fasta?id=",OG,"&species=",Tax$id[i],sep="")
     cat(URL,"\n")
