@@ -2,6 +2,7 @@
 #(see https://www.orthodb.org/orthodb_userguide.html#api)
 
 library(rjson)
+library(httr)
 
 #Get from orthodb orthogroups at the vertebrate level (taxid=7742)
 #that are present in >90% of species and are single copy in >90% of species 
@@ -13,7 +14,7 @@ for(OG in OGs$data[1:3]){
   for(i in 1:NROW(Tax$id)){
     URL<-paste("http://www.orthodb.org/fasta?id=",OG,"&species=",Tax$id[i],sep="")
     cat(URL,"\n")
-    out<-system2("wget",args=c(" -q -O - ",URL),stdout=TRUE)
+    apiResult<-GET(URL,handle=h)
     file_name<-paste(Tax$name[i],"fa",sep=".")
     write(out, file=file_name, append=TRUE)
     Sys.sleep(0.1)
