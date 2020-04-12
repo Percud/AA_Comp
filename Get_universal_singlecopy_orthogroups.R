@@ -8,25 +8,16 @@ library(Biostrings)
 #that are present in >90% of species and are single copy in >90% of species 
 OGs<-fromJSON(file='https://www.orthodb.org//search?level=7742&universal=0.9&singlecopy=0.9&limit=5000')
 
+Tax=list(id=c(8457,40674,7898),name=c("Sauropsida","Mammalia","Actinopterygii"))
+
 for(OG in OGs$data[1:3]){
-  #Sauropsida - taxid:8457   
-  url<-paste("http://www.orthodb.org/fasta?id=",OG,"&species=","8457",sep="")
-  f<-open_input_files(url)
-  seq<-readAAStringSet(f)
-  str(f)
-  writeXStringSet(seq, "Sauropsida.fa", append=TRUE)
-  Sys.sleep(10)
-  #Mammalia - taxid:40674 
-  url2<-paste("http://www.orthodb.org/fasta?id=",OG,"&species=","40674",sep="")
-  seq<-readAAStringSet(open_input_files(url2))
-  writeXStringSet(seq, "Mammalia.fa", append=TRUE)
-  cat(url)
-  Sys.sleep(10)
-  #Actinopterygii - taxid:7898 
-  url<-paste("http://www.orthodb.org/fasta?id=",OG,"&species=","7898",sep="")
-  seq<-readAAStringSet(open_input_files(url))
-  writeXStringSet(seq, "Fishes.fa", append=TRUE)
-  Sys.sleep(10)
+  for(i in 1:NROW(Tax$id)){
+    url<-paste("http://www.orthodb.org/fasta?id=",OG,"&species=",Tax$id[i],sep="")
+    seq<-readAAStringSet(open_input_files(url))
+    file_name<-paste(Tax$id[i],"fa",sep=".")
+    writeXStringSet(seq, file_name, append=TRUE)
+    Sys.sleep(10)
+  }
 }
 
 
