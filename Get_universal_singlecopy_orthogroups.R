@@ -19,7 +19,7 @@ for(OG in OGs$data[1:3]){
     file_name<-paste(Tax$name[i],"fa",sep=".")
     write(content(apiResult,"text"), file=file_name, append=TRUE)
     Sys.sleep(0.1)
-    handle_reset(URL$h)
+    handle_reset(URL)
   }
 }
 
