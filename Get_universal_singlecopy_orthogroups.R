@@ -14,7 +14,7 @@ for(OG in OGs$data[1:3]){
   for(i in 1:NROW(Tax$id)){
     URL<-paste("http://www.orthodb.org/fasta?id=",OG,"&species=",Tax$id[i],sep="")
     apiResult<-GET(URL)
-    file_name<-paste(Tax$id[i],"fa",sep=".")
+    file_name<-paste(Tax$name[i],"fa",sep=".")
     write(content(apiResult,"text"), file=file_name, append=TRUE)
     Sys.sleep(1)
   }
