@@ -15,7 +15,7 @@ myParseOrthoFastaNames<-function(x)
 }    
 
 Seq_df<-data.frame() # main dataframe
-
+myList<-list()
 
 for(n in Tax$name){
     fname<-paste0("data/",n,"_10.fa")
@@ -23,9 +23,9 @@ for(n in Tax$name){
     f<-alphabetFrequency(seq)
    
     df<-data.frame("Classification"=n,myParseOrthoFastaNames(names(seq)),f)
-    if (exists('L')){L<-list(L,df)} else {L<-list(df)}
+    myList[[length(myList)+1]] <- list(df)
 }
-Seq_df<-do.call(rbind.data.frame,L)
+Seq_df<-do.call(rbind.data.frame,myList)
 str(Seq_df)
 
 
