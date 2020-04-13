@@ -15,6 +15,7 @@ myParseOrthoFastaNames<-function(x)
 }    
 
 Seq_df<-data.frame() # main dataframe
+L<-list()
 
 for(n in Tax$name){
     fname<-paste0("data/",n,"_10.fa")
