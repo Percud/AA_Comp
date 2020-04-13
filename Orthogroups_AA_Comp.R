@@ -6,6 +6,14 @@ library(Biostrings)
 
 Tax=list(id=c(8457,40674,7898),name=c("Sauropsida","Mammalia","Actinopterygii"))
 
+myParseOrthoFastaNames<-function(x)
+{
+    seq_id<-gsub('^(\\S+).*','\\1',x)            #vector of ids
+    seq_def<-gsub('.*(\\{.*\\})','\\1',x)        #vector of def (json format)        
+    def_df<-do.call(rbind.data.frame,lapply(seq_def,fromJSON)) #apply fromJSON to seq_def, return a data.frame 
+ return(data.frame("seq_id"=seq_id,def_df))
+}    
+
 Seq_df<-data.frame() # main dataframe
 
 for(n in Tax$name){
@@ -19,11 +27,4 @@ for(n in Tax$name){
 Seq_df<-do.call(rbind.data.frame,L)
 str(Seq_df)
 
-myParseOrthoFastaNames<-function(x)
-{
-    seq_id<-gsub('^(\\S+).*','\\1',x)            #vector of ids
-    seq_def<-gsub('.*(\\{.*\\})','\\1',x)        #vector of def (json format)        
-    def_df<-do.call(rbind.data.frame,lapply(seq_def,fromJSON)) #apply fromJSON to seq_def, return a data.frame 
-    
-    return(data.frame("seq_id"=seq_id,def_df))
-}
+
