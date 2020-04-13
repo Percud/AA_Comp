@@ -26,6 +26,6 @@ for(n in Tax$name){
     myList[[length(myList)+1]] <- df #add df to myList 
 }
 Seq_df<-do.call(rbind.data.frame,myList)
-str(Seq_df)
+write.csv(df,"AA_Comp.csv", row.names = FALSE)
 
 
