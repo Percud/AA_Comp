@@ -11,7 +11,7 @@ myParseOrthoFasta<-function(x)
     seq_id<-gsub('^(\\S+).*','\\1',names(x))            #vector of ids
     seq_def<-gsub('.*(\\{.*\\})','\\1',names(x))        #vector of def (json format)        
     df<-do.call(rbind.data.frame,lapply(seq_def,fromJSON)) #apply fromJSON to seq_def, return a data.frame 
- return(data.frame("seq_id"=seq_id,df,"width"=x$AAStringSet$width,"seq_seq"=x$AAStringSet$seq))
+ return(data.frame("seq_id"=seq_id,df,"width"=with(x),"seq_seq"=x))
 }    
 
 Seq_df<-data.frame() # main dataframe
