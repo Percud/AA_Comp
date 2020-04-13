@@ -23,7 +23,7 @@ for(n in Tax$name){
     f<-alphabetFrequency(seq)
    
     df<-data.frame("Classification"=n,myParseOrthoFastaNames(names(seq)),f)
-    myList[[length(myList)+1]] <- list(df)
+    myList[[length(myList)+1]] <- df #add df to myList 
 }
 Seq_df<-do.call(rbind.data.frame,myList)
 str(Seq_df)
