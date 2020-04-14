@@ -5,18 +5,18 @@ library(dplyr)
 library(gridExtra)
 library(grid)
 
-args[1] = ''
+args[1] = "all"
 args[2] = c("A","C","D","E,","F","G","H","I","K","L","M","N","R","P","Q","S","T","Y","W","V")
 args = commandArgs(trailingOnly=TRUE)
 
 
 fname="AA_Comp.csv"
 
+og<-args[1]
 aa<-args[2]
 
 df<-read.csv(fname,  header=TRUE)
-if (args[1]){
-  og<-args[1]
+if (args[1]!="all"){
   df <- filter(df, pub_og_id==og)
 }
 
