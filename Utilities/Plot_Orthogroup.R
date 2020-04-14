@@ -13,8 +13,8 @@ if (length(args)==0) {
 
 fname="AA_Comp.csv"
 
-og<-arg[1]
-aa<-arg[2]
+og<-args[1]
+aa<-args[2]
 
 df<-read.csv(fname,  header=TRUE)
 
