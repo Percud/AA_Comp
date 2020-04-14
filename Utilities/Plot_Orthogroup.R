@@ -2,22 +2,37 @@
 
 library(ggplot2)
 library(dplyr)
+library(gridExtra)
+library(grid)
 
+args[1] = NULL
+args[2] = c("A","C","D","E,","F","G","H","I","K","L","M","N","R","P","Q","S","T","Y","W","V")
 args = commandArgs(trailingOnly=TRUE)
 
-if (length(args)==0) {
-  stop("At least one argument must be supplied (input file).n", call.=FALSE)
-} else if (length(args)==1) {
-  args[2] = "C"
-}
 
 fname="AA_Comp.csv"
 
-og<-args[1]
 aa<-args[2]
 
 df<-read.csv(fname,  header=TRUE)
+if (args[1]){
+  og<-args[1]
+  df <- filter(df, pub_og_id==og)
+}
 
-df_o <- filter(df, pub_og_id==og)
+x=df[['Classification']]
 
-qplot('Classification','C',data=df_o)+geom_boxplot()+geom_jitter()+scale_x_discrete(name="",limits=c("Actinopterygii","Sauropsida","Mammalia"))+ylab(paste("Number of",aa,"in the sequence"))
+if (!aa[2]){
+  y=df_o[[aa]]
+  qplot(x,y)+geom_boxplot()+geom_jitter()+scale_x_discrete(name="",limits=c("Actinopterygii","Sauropsida","Mammalia"))+ylab(paste("Number of",aa,"in the sequence"))
+}
+else {
+  plt_array<-apply(aa,function(i){qplot(x,df[[i]])+geom_boxplot()+geom_jitter()+scale_x_discrete(name="",limits=c("Actinopterygii","Sauropsida","Mammalia"))+ylab(paste("Number of",i,"in the sequence"))})
+  grid.arrange(plt_array, ncol=5, top=textGrob("AA", gp=gpar(fontsize=12, font = 2)))
+  }
+
+
+
+
+
+
