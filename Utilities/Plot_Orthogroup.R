@@ -5,7 +5,7 @@ library(dplyr)
 library(gridExtra)
 library(grid)
 
-args[1] = NULL
+args[1] = ''
 args[2] = c("A","C","D","E,","F","G","H","I","K","L","M","N","R","P","Q","S","T","Y","W","V")
 args = commandArgs(trailingOnly=TRUE)
 
