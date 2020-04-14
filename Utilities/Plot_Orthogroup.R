@@ -23,8 +23,8 @@ if (args[1]!="all"){
 
 x=df[['Classification']]
 
-if (!aa[2]){
-  y=df_o[[aa]]
+if (length(aa)>=2){
+  y=df[[aa]]
   qplot(x,y)+geom_boxplot()+geom_jitter()+scale_x_discrete(name="",limits=c("Actinopterygii","Sauropsida","Mammalia"))+ylab(paste("Number of",aa,"in the sequence"))
 }
 else {
