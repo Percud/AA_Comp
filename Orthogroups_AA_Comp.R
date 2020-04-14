@@ -6,12 +6,13 @@ library(Biostrings)
 
 Tax=list(id=c(8457,40674,7898),name=c("Sauropsida","Mammalia","Actinopterygii"))
 
-myParseOrthoFasta<-function(x)
+myParseOrthoFastaNames<-function(x)
 {
-    seq_id<-gsub('^(\\S+).*','\\1',names(x))            #vector of ids
-    seq_def<-gsub('.*(\\{.*\\})','\\1',names(x))        #vector of def (json format)        
-    df<-do.call(rbind.data.frame,lapply(seq_def,fromJSON)) #apply fromJSON to seq_def, return a data.frame 
- return(data.frame("seq_id"=seq_id,df,"width"=width(x),"seq_seq"=x))
+    regex='^(\\S+).*(\\{.*\\})'    #id def /def is in JSON format: {...}/
+    id<-sub(regex,'\\1',x)         #vector of ids
+    def<-sub(regex,'\\2',x)        #vector of def         
+    df<-do.call(rbind.data.frame,lapply(def,fromJSON)) #apply fromJSON to def, convert in a data.frame 
+ return(data.frame("seq_id"=id, df))
 }    
 
 Seq_df<-data.frame() # main dataframe
@@ -22,7 +23,7 @@ for(n in Tax$name){
     seq<-readAAStringSet(fname)
     f<-alphabetFrequency(seq)
    
-    df<-data.frame("Classification"=n,myParseOrthoFasta(seq),f)
+    df<-data.frame("Classification"=n,myParseOrthoFastaNames(names(seq)),"width"=width(seq),"seq_seq"=seq, f)
     myList[[length(myList)+1]] <- df #add df to myList 
 }
 Seq_df<-do.call(rbind.data.frame,myList)
