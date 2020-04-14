@@ -20,4 +20,4 @@ df<-read.csv(fname,  header=TRUE)
 
 df_o <- filter(df, pub_og_id==og)
 
-qplot('Classification',aa,data=df_o)+geom_boxplot()+geom_jitter()+scale_x_discrete(name="",limits=c("Actinopterygii","Sauropsida","Mammals"))+ylab(paste("Number of",aa,"in the sequence"))
+qplot('Classification','C',data=df_o)+geom_boxplot()+geom_jitter()+scale_x_discrete(name="",limits=c("Actinopterygii","Sauropsida","Mammals"))+ylab(paste("Number of",aa,"in the sequence"))
