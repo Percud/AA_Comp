@@ -26,11 +26,10 @@ x=df[['Classification']]
 if (length(aa)>=2){
   y=df[[aa]]
   qplot(x,y)+geom_boxplot()+geom_jitter()+scale_x_discrete(name="",limits=c("Actinopterygii","Sauropsida","Mammalia"))+ylab(paste("Number of",aa,"in the sequence"))
-}
-else {
+} else {
   plt_array<-apply(aa,function(i){qplot(x,df[[i]])+geom_boxplot()+geom_jitter()+scale_x_discrete(name="",limits=c("Actinopterygii","Sauropsida","Mammalia"))+ylab(paste("Number of",i,"in the sequence"))})
   grid.arrange(plt_array, ncol=5, top=textGrob("AA", gp=gpar(fontsize=12, font = 2)))
-  }
+}
 
 
 
