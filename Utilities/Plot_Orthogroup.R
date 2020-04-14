@@ -27,8 +27,9 @@ if (length(aa)>=2){
   y=df[[aa]]
   qplot(x,y)+geom_boxplot()+geom_jitter()+scale_x_discrete(name="",limits=c("Actinopterygii","Sauropsida","Mammalia"))+ylab(paste("Number of",aa,"in the sequence"))
 } else {
-  plt_array<-sapply(aa,function(i){qplot(x,df[[i]])+geom_boxplot()+geom_jitter()+scale_x_discrete(name="",limits=c("Actinopterygii","Sauropsida","Mammalia"))+ylab(paste("Number of",i,"in the sequence"))})
-  grid.arrange(plt_array, ncol=5, top=textGrob("AA", gp=gpar(fontsize=12, font = 2)))
+  pltList<-lapply(aa,function(i){qplot(x,df[[i]])+geom_boxplot()+geom_jitter()+scale_x_discrete(name="",limits=c("Actinopterygii","Sauropsida","Mammalia"))+ylab(paste("Number of",i,"in the sequence"))})
+  do.call(grid.arrange, c(pltList, ncol=2))
+  #grid.arrange(plt_array, ncol=5, top=textGrob("AA", gp=gpar(fontsize=12, font = 2)))
 }
 
 
