@@ -13,7 +13,7 @@ fname="AA_Comp.csv"
 df<-read.csv(fname,  header=TRUE)
 
 og<-args[1]
-if (exists(args[2])){
+if (length(args)==2){
   aa<-args[2]
 }
 
