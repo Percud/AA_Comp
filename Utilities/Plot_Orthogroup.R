@@ -24,12 +24,17 @@ if (args[1]!="all"){
 
 x=df[['Classification']]
 
+pdf(file = "aaPlot.pdf", width = 8, height = 11) # defaults to 7 x 7 inches
+
+
 if (length(aa)==1){ #single plot
   qplot(x,df[[aa]])+geom_boxplot()+geom_jitter()+scale_x_discrete(name="",limits=c("Actinopterygii","Sauropsida","Mammalia"))+ylab(paste("Number of",aa,"in the sequence"))
 } else { #multi plot
   pltList<-lapply(aa,function(i){qplot(x,df[[i]])+geom_boxplot()+geom_jitter()+scale_x_discrete(name="",limits=c("Actinopterygii","Sauropsida","Mammalia"))+ylab(paste("Number of",i,"in the sequence"))})
   do.call(grid.arrange, c(pltList, ncol=5))
 }
+
+dev.off()
 
 
 
