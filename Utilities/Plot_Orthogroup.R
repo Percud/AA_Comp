@@ -24,7 +24,7 @@ if (args[1]!="all"){
 
 x=df[['Classification']]
 
-pdf(file = "aaPlot.pdf", width = 8, height = 11) # defaults to 7 x 7 inches
+pdf(file = "aaPlot.pdf", width = 11, height = 8) # defaults to 7 x 7 inches
 
 
 if (length(aa)==1){ #single plot
