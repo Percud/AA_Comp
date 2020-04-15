@@ -1,4 +1,5 @@
 #Plot aa ditribution using ggplot2
+#Plot_Orthogroup.R pub_og_id|all [aa]
 
 library(ggplot2)
 library(dplyr)
@@ -23,9 +24,9 @@ if (args[1]!="all"){
 
 x=df[['Classification']]
 
-if (length(aa)==1){
+if (length(aa)==1){ #single plot
   qplot(x,df[[aa]])+geom_boxplot()+geom_jitter()+scale_x_discrete(name="",limits=c("Actinopterygii","Sauropsida","Mammalia"))+ylab(paste("Number of",aa,"in the sequence"))
-} else {
+} else { #multi plot
   pltList<-lapply(aa,function(i){qplot(x,df[[i]])+geom_boxplot()+geom_jitter()+scale_x_discrete(name="",limits=c("Actinopterygii","Sauropsida","Mammalia"))+ylab(paste("Number of",i,"in the sequence"))})
   do.call(grid.arrange, c(pltList, ncol=5))
 }
