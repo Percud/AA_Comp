@@ -1,5 +1,5 @@
 #Retrieve Orthogroup information and FASTA sequences from orthodp using API
-#(see https://www.orthodb.org/orthodb_userguide.html#api)
+#(see https://www.orthodb.org/orthodb_userguide.html#api )
 
 library(rjson)
 library(httr)
