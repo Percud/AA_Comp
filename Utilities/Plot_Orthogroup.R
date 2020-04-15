@@ -5,7 +5,7 @@ library(dplyr)
 library(gridExtra)
 library(grid)
 
-aa = c("A","C","D","E,","F","G","H","I","K","L","M","N","R","P","Q","S","T","Y","W","V")
+aa = c("A","C","D","E","F","G","H","I","K","L","M","N","R","P","Q","S","T","Y","W","V")
 args = commandArgs(trailingOnly=TRUE)
 
 
@@ -24,12 +24,10 @@ if (args[1]!="all"){
 x=df[['Classification']]
 
 if (length(aa)==1){
-  y=df[[aa]]
-  qplot(x,y)+geom_boxplot()+geom_jitter()+scale_x_discrete(name="",limits=c("Actinopterygii","Sauropsida","Mammalia"))+ylab(paste("Number of",aa,"in the sequence"))
+  qplot(x,df[[aa]])+geom_boxplot()+geom_jitter()+scale_x_discrete(name="",limits=c("Actinopterygii","Sauropsida","Mammalia"))+ylab(paste("Number of",aa,"in the sequence"))
 } else {
   pltList<-lapply(aa,function(i){qplot(x,df[[i]])+geom_boxplot()+geom_jitter()+scale_x_discrete(name="",limits=c("Actinopterygii","Sauropsida","Mammalia"))+ylab(paste("Number of",i,"in the sequence"))})
   do.call(grid.arrange, c(pltList, ncol=5))
-  #grid.arrange(plt_array, ncol=5, top=textGrob("AA", gp=gpar(fontsize=12, font = 2)))
 }
 
 
