@@ -5,7 +5,7 @@ library(ggplot2)
 library(dplyr)
 library(gridExtra)
 library(grid)
-#library(Hmisc)
+
 
 Taxa=c("Actinopterygii","Sauropsida","Mammalia")
 aa = c("A","C","D","E","F","G","H","I","K","L","M","N","R","P","Q","S","T","Y","W","V")
@@ -28,13 +28,17 @@ x=df[['Classification']]
 
 pdf(file = "aaPlot.pdf", width = 15, height = 10) # defaults to 7 x 7 inches
 
-#geom_violin(fill="gray")+stat_summary(fun.data="mean_cl_boot", colour="red")+theme_classic()
+#geom_violin(fill="gray")+stat_summary(fun.data="mean_cl_boot", colour="red", size=1)+theme_classic()
 #geom_boxplot(outlier.shape = NA) + geom_jitter(width = 0.2)
 
 if (length(aa)==1){ #single plot
-  qplot(x,df[[aa]],geom="blank")+geom_violin(fill="gray")+stat_summary(fun.data="mean_cl_boot", colour="red")+theme_classic()+scale_x_discrete(name="",limits=Taxa)+ylab(paste("Number of",aa,"in the sequence"))
+  qplot(x,df[[aa]],geom="blank")+scale_x_discrete(name="",limits=Taxa)+ylab(paste("Number of",aa,"in the sequence"))+
+  geom_violin(fill="gray")+stat_summary(fun.data="mean_cl_boot", colour="red", size=1)+theme_classic()
+  #geom_boxplot(outlier.shape = NA) + geom_jitter(width = 0.2)
 } else { #multi plot
   pltList<-lapply(aa,function(i){qplot(x,df[[i]],geom="blank")+geom_violin(fill="gray")+stat_summary(fun.data="mean_cl_boot", colour="red")+theme_classic()+scale_x_discrete(name="",limits=Taxa)+ylab(paste("Number of",i,"in the sequence"))})
+  geom_violin(fill="gray")+stat_summary(fun.data="mean_cl_boot", colour="red", size=1)+theme_classic()
+  #geom_boxplot(outlier.shape = NA) + geom_jitter(width = 0.2)
   do.call(grid.arrange, c(pltList, ncol=5))
 }
 warnings()
