@@ -41,7 +41,7 @@ if (length(aa)==1){ #single plot
 } else { #multi plot
   pltList<-lapply(aa,function(i){qplot(x,df[[i]],geom="blank")+scale_x_discrete(name="",limits=Taxa)+ylab(paste("Number of",i,"in the sequence"))+
   #geom_boxplot(outlier.shape = NA) + geom_jitter(width = 0.2)
-  geom_boxplot(outlier.shape = NA)+ ylim(0,100)})
+  geom_boxplot(outlier.shape = NA)+ ylim(0,15)})
   do.call(grid.arrange, c(pltList, ncol=5))
 }
 warnings()
