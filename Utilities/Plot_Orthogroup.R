@@ -25,7 +25,7 @@ if (args[1]!="all"){
 
 x=df[['Classification']]
 
-pdf(file = "aaPlot.pdf", width = 14, height = 10) # defaults to 7 x 7 inches
+pdf(file = "aaPlot.pdf", width = 15, height = 10) # defaults to 7 x 7 inches
 
 #geom_violin(trim=FALSE, fill="gray")+stat_summary(fun.data=mean_sdl, mult=1, geom="pointrange", color="red")+theme_classic()+ylim(0,100)
 #geom_boxplot(outlier.shape = NA) + geom_jitter(width = 0.2)
