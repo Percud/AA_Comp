@@ -27,12 +27,13 @@ x=df[['Classification']]
 
 pdf(file = "aaPlot.pdf", width = 14, height = 10) # defaults to 7 x 7 inches
 
-#geom_violin(trim=FALSE, fill="gray")+geom_boxplot(width=0.1)+theme_classic()
+#geom_violin(trim=FALSE, fill="gray")+stat_summary(fun.data=mean_sdl, mult=1, geom="pointrange", color="red")+theme_classic()+ylim(0,100)
+#geom_boxplot(outlier.shape = NA) + geom_jitter(width = 0.2)
 
 if (length(aa)==1){ #single plot
-  qplot(x,df[[aa]])+geom_violin(trim=FALSE, fill="gray")+geom_boxplot(width=0.1)+theme_classic()+ylim(0, 100)+scale_x_discrete(name="",limits=Taxa)+ylab(paste("Number of",aa,"in the sequence"))
+  qplot(x,df[[aa]])+geom_violin(trim=FALSE, fill="gray")+stat_summary(fun.data=mean_sdl, mult=1, geom="pointrange", color="red")+theme_classic()+ylim(0,100)+scale_x_discrete(name="",limits=Taxa)+ylab(paste("Number of",aa,"in the sequence"))
 } else { #multi plot
-  pltList<-lapply(aa,function(i){qplot(x,df[[i]])+geom_violin(trim=FALSE, fill="gray")+geom_boxplot(width=0.1)+theme_classic()+ylim(0, 100)+scale_x_discrete(name="",limits=Taxa)+ylab(paste("Number of",i,"in the sequence"))})
+  pltList<-lapply(aa,function(i){qplot(x,df[[i]])+geom_violin(trim=FALSE, fill="gray")+stat_summary(fun.data=mean_sdl, mult=1, geom="pointrange", color="red")+theme_classic()+ylim(0,100)+scale_x_discrete(name="",limits=Taxa)+ylab(paste("Number of",i,"in the sequence"))})
   do.call(grid.arrange, c(pltList, ncol=5))
 }
 
