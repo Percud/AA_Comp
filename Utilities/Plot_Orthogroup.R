@@ -11,7 +11,7 @@ aa = c("A","C","D","E","F","G","H","I","K","L","M","N","R","P","Q","S","T","Y","
 args = commandArgs(trailingOnly=TRUE)
 
 
-fname="AA_Comp.csv"
+fname="AA_Comp_10.csv"
 df<-read.csv(fname,  header=TRUE)
 
 og<-args[1]
