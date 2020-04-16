@@ -29,9 +29,9 @@ pdf(file = "aaPlot.pdf", width = 14, height = 10) # defaults to 7 x 7 inches
 
 
 if (length(aa)==1){ #single plot
-  qplot(x,df[[aa]])+geom_boxplot()+geom_jitter()+scale_x_discrete(name="",limits=Taxa)+ylab(paste("Number of",aa,"in the sequence"))
+  qplot(x,df[[aa]])+geom_count()+geom_boxplot()+geom_jitter()+scale_x_discrete(name="",limits=Taxa)+ylab(paste("Number of",aa,"in the sequence"))
 } else { #multi plot
-  pltList<-lapply(aa,function(i){qplot(x,df[[i]])+geom_boxplot()+geom_jitter()+scale_x_discrete(name="",limits=Taxa)+ylab(paste("Number of",i,"in the sequence"))})
+  pltList<-lapply(aa,function(i){qplot(x,df[[i]])+geom_count()+geom_boxplot()+geom_jitter()+scale_x_discrete(name="",limits=Taxa)+ylab(paste("Number of",i,"in the sequence"))})
   do.call(grid.arrange, c(pltList, ncol=5))
 }
 
