@@ -5,6 +5,7 @@ library(ggplot2)
 library(dplyr)
 library(gridExtra)
 library(grid)
+library(Hmisc)
 
 Taxa=c("Actinopterygii","Sauropsida","Mammalia")
 aa = c("A","C","D","E","F","G","H","I","K","L","M","N","R","P","Q","S","T","Y","W","V")
