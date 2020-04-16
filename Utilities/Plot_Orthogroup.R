@@ -36,9 +36,9 @@ if (length(aa)==1){ #single plot
   geom_violin(fill="gray")+stat_summary(fun.data="mean_cl_boot", colour="red", size=1)+theme_classic()
   #geom_boxplot(outlier.shape = NA) + geom_jitter(width = 0.2)
 } else { #multi plot
-  pltList<-lapply(aa,function(i){qplot(x,df[[i]],geom="blank")+geom_violin(fill="gray")+stat_summary(fun.data="mean_cl_boot", colour="red")+theme_classic()+scale_x_discrete(name="",limits=Taxa)+ylab(paste("Number of",i,"in the sequence"))})
-  geom_violin(fill="gray")+stat_summary(fun.data="mean_cl_boot", colour="red", size=1)+theme_classic()
-  #geom_boxplot(outlier.shape = NA) + geom_jitter(width = 0.2)
+  pltList<-lapply(aa,function(i){qplot(x,df[[i]],geom="blank")+scale_x_discrete(name="",limits=Taxa)+ylab(paste("Number of",i,"in the sequence"))+
+  geom_violin(fill="gray")+stat_summary(fun.data="mean_cl_boot", colour="red", size=1)+theme_classic()})
+  #geom_boxplot(outlier.shape = NA) + geom_jitter(width = 0.2)})
   do.call(grid.arrange, c(pltList, ncol=5))
 }
 warnings()
