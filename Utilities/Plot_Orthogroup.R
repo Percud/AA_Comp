@@ -25,7 +25,7 @@ if (args[1]!="all"){
 }
 
 
-df[,aa]<-df[,aa]]/df$width*100 #percentage
+df[,aa]<-df[,aa]/df$width*100 #percentage
 
 
 x=df[['Classification']]
