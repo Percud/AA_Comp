@@ -24,16 +24,15 @@ if (args[1]!="all"){
 }
 
 x=df[['Classification']]
-y=df[[aa]]
 
 pdf(file = "aaPlot.pdf", width = 14, height = 10) # defaults to 7 x 7 inches
 
 g=c("boxplot")
 
 if (length(aa)==1){ #single plot
-  qplot(x,y,geom=g)+scale_x_discrete(name="",limits=Taxa)+ylab(paste("Number of",aa,"in the sequence"))
+  qplot(x,df[[aa]],geom=g)+scale_x_discrete(name="",limits=Taxa)+ylab(paste("Number of",aa,"in the sequence"))
 } else { #multi plot
-  pltList<-lapply(y,function(i){qplot(x,i,geom=g)+scale_x_discrete(name="",limits=Taxa)+ylab(paste("Number of",i,"in the sequence"))})
+  pltList<-lapply(aa,function(i){qplot(x,i,geom=g)+scale_x_discrete(name="",limits=Taxa)+ylab(paste("Number of",i,"in the sequence"))})
   do.call(grid.arrange, c(pltList, ncol=5))
 }
 
