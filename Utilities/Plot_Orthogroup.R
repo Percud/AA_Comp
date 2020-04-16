@@ -36,7 +36,7 @@ if (length(aa)==1){ #single plot
   pltList<-lapply(aa,function(i){qplot(x,df[[i]],geom="blank")+geom_violin(fill="gray")+stat_summary(fun.data=mean_sdl, mult=1, geom="pointrange", color="red")+theme_classic()+scale_x_discrete(name="",limits=Taxa)+ylab(paste("Number of",i,"in the sequence"))})
   do.call(grid.arrange, c(pltList, ncol=5))
 }
-
+warnings()
 dev.off()
 
 
