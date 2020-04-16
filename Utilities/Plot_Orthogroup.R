@@ -24,7 +24,9 @@ if (args[1]!="all"){
   df <- filter(df, pub_og_id==og)
 }
 
-p<-sapply(aa, function(x){df[[x]]<-df[[x]]/df$width*100}) #percentage
+for a in aa{
+  df[[a]]<-df[[a]]/df$width*100 #percentage
+}
 
 x=df[['Classification']]
 
