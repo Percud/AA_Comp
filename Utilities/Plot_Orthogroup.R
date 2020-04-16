@@ -29,9 +29,9 @@ pdf(file = "aaPlot.pdf", width = 14, height = 10) # defaults to 7 x 7 inches
 
 
 if (length(aa)==1){ #single plot
-  ggplot(x,df[[aa]])+geom_boxplot()+scale_x_discrete(name="",limits=Taxa)+ylab(paste("Number of",aa,"in the sequence"))
+  ggplot(aes(x=x,y=df[[aa]]))+geom_boxplot()+scale_x_discrete(name="",limits=Taxa)+ylab(paste("Number of",aa,"in the sequence"))
 } else { #multi plot
-  pltList<-lapply(aa,function(i){ggplot(x,df[[i]])+geom_boxplot()+scale_x_discrete(name="",limits=Taxa)+ylab(paste("Number of",i,"in the sequence"))})
+  pltList<-lapply(aa,function(i){ggplot(aes(x=x,y=df[[i]]))+geom_boxplot()+scale_x_discrete(name="",limits=Taxa)+ylab(paste("Number of",i,"in the sequence"))})
   do.call(grid.arrange, c(pltList, ncol=5))
 }
 
