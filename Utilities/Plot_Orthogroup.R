@@ -32,7 +32,7 @@ g=c("boxplot")
 if (length(aa)==1){ #single plot
   qplot(x,df[[aa]],geom=g)+scale_x_discrete(name="",limits=Taxa)+ylab(paste("Number of",aa,"in the sequence"))
 } else { #multi plot
-  pltList<-lapply(aa,function(i){qplot(x,i,geom=g)+scale_x_discrete(name="",limits=Taxa)+ylab(paste("Number of",i,"in the sequence"))})
+  pltList<-lapply(aa,function(i){qplot(x,df[[i]],geom=g)+scale_x_discrete(name="",limits=Taxa)+ylab(paste("Number of",i,"in the sequence"))})
   do.call(grid.arrange, c(pltList, ncol=5))
 }
 
