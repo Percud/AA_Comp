@@ -1,10 +1,11 @@
 
-g_median = function(T, seq_id) {
+#add median per group (same Classification & pub_og_id)
 
-  gene<-T[which(T$seq_id == seq_id),]
-  #data.frame of sequence widths for the same Classification and pub_og_id as seq_id
-  widths<-T[which(T$Classification == gene$Classification & T$pub_og_id == gene$pub_og_id), "width"]
-  
-return(median(widths[['width']]))
-}
-  
+AA_Comp_10$g_median<-ave(AA_Comp_10$width,AA_Comp_10$pub_og_id,FUN=median)
+
+#sequences comprised in 15% of the group median
+
+AA_Comp_10$Seq.pass<-with(AA_Comp_10, width>=g_median-g_median*0.15 &width<=g_median+g_median*0.15)
+
+#fraction of group genes with Seq.pass = TRUE
+AA_Comp_10$Group.pass<-ave(AA_Comp_10$Seq.pass,AA_Comp_10$pub_og_id,FUN=function (x) sum(x)/length(x))
