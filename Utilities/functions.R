@@ -18,13 +18,15 @@ format_ttest <- function (x){
   names(m)<-apply(pairwise , 2, function (x) paste(x[1],x[2],'pvalue',sep="."))
   return(as.data.frame(t(m)))
 }
-for aa in c("A","C"){  
+Res<-data.frame()
+for (aa in c("A","C","K")){  
 t<-AA_Comp_10 %>% 
    filter(Seq.pass)  %>%
    filter(Group.pass >= 0.8)  %>% 
    group_by(pub_og_id) %>% 
    do(format_ttest(pairwise.t.test(.[[aa]],.[["Classification"]],p.adjust.method='none'))) %>%
    mutate(.,AA=aa)
+Res<-rbind(t,Res)
 }
                            
 #correct pvalues for multiple tests
