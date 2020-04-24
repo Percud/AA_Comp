@@ -11,19 +11,21 @@ AA_Comp_10$Seq.pass<-with(AA_Comp_10, width>=g_median-g_median*0.15 & width<=g_m
 AA_Comp_10$Group.pass<-ave(AA_Comp_10$Seq.pass,AA_Comp_10$pub_og_id,FUN=function (x) sum(x)/length(x))
 
 #pairwise test
-format_ttest <- function (x, pairwise){
-  p=x[['p.value]]
-  m<-apply(combn(Tax$name,2),2, function(x) p[x[1],x[2]])
-  names(m)<-apply(combn(Tax$name,2),2, function(x) paste(x[1],x[2],'pvalue',sep="."))
+pairwise=combn(Tax$name,2)                           
+format_ttest <- function (x){
+  p=x[['p.value']]
+  m<-apply(pairwise , 2 , function (x) p[x[1],x[2]])
+  names(m)<-apply(pairwise , 2, function (x) paste(x[1],x[2],'pvalue',sep="."))
   return(as.data.frame(t(m)))
 }
-  
+for aa in c("A","C"){  
 t<-AA_Comp_10 %>% 
-   filter(Seq.pass)  %>% 
+   filter(Seq.pass)  %>%
    filter(Group.pass >= 0.8)  %>% 
    group_by(pub_og_id) %>% 
-   do(as.data.frame(apply(combn(Tax$name,2),2, function(x) t.test(.[which(.$Classification==x[1]),"C"],.[which(.$Classification==x[2]),"C"])[['p.value']])))                           
-                           
+   do(format_ttest(pairwise.t.test(.[[aa]],.[["Classification"]],p.adjust.method='none'))) %>%
+   mutate(.,AA=aa)
+}
                            
 #correct pvalues for multiple tests
 pV<-AA_Comp_10[,grepl("pvalue", names(AA_Comp_10))]
