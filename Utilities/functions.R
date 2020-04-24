@@ -18,7 +18,10 @@ format_ttest <- function (x){
   names(m)<-apply(pairwise , 2, function (x) paste(x[1],x[2],'pvalue',sep="."))
   return(as.data.frame(t(m)))
 }
+                  
 Res<-data.frame()
+myList<-list();
+                  
 for (aa in c("A","C","K")){  
 t<-AA_Comp_10 %>% 
    filter(Seq.pass)  %>%
@@ -26,9 +29,9 @@ t<-AA_Comp_10 %>%
    group_by(pub_og_id) %>% 
    do(format_ttest(pairwise.t.test(.[[aa]],.[["Classification"]],p.adjust.method='none'))) %>%
    mutate(.,AA=aa)
-Res<-rbind(t,Res)
+   myList[[length(myList)+1]] <- df #add df to myList 
 }
-                           
+         
 #correct pvalues for multiple tests
 pV<-AA_Comp_10[,grepl("pvalue", names(AA_Comp_10))]
 AA_Comp_10[, names(pV)]<-matrix(p.adjust(as.vector(as.matrix(pV))),ncol=ncol(pV))
