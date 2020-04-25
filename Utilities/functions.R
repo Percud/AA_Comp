@@ -32,6 +32,7 @@ df<-AA_Comp_10 %>%
    filter(Seq.pass)  %>%
    filter(Group.pass >= 0.8)  %>% 
    group_by(pub_og_id) %>% 
+   filter(n()>=30) %>%
    do(format_ttest(pairwise.t.test(.[[aa]],.[["Classification"]],p.adjust.method='none'),.[,"pub_og_id"])) %>%
    mutate(.,AA=aa)
 
