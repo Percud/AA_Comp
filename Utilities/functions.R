@@ -10,33 +10,50 @@ AA_Comp_10$Seq.pass<-with(AA_Comp_10, width>=g_median-g_median*0.15 & width<=g_m
 #fraction of group genes with Seq.pass = TRUE
 AA_Comp_10$Group.pass<-ave(AA_Comp_10$Seq.pass,AA_Comp_10$pub_og_id,FUN=function (x) sum(x)/length(x))
 
-
-#pairwise test
-pairwise=combn(Tax$name,2)                           
-format_ttest <- function (x){
-  #print(d)
-
-  p=x[['p.value']]
-  m<-apply(pairwise , 2 , function (x) p[x[1],x[2]])
-  names(m)<-apply(pairwise , 2, function (x) paste(x[1],x[2],'pvalue',sep="."))
-  return(as.data.frame(t(m)))
-  
+pair_matrix=combn(Tax$name,2) 
+#pairwise t.test function                         
+pairwise_ttest<-function(col,g,pair_matrix){
+  m<-cbind(col,g)
+  r<-apply(pair_matrix,2,function(x) t.test(m[m$g==x[1],1],m[m$g==x[2],1])$p.value)
+  names(r)=apply(pair_matrix,2,function(x) paste(x[1],x[2],"pvalue",sep="."))
+  as.data.frame(t(r))
 }
-                  
+
+#pairwise fold_change function     
+pairwise_fold_change<-function(col,g,pair_matrix){
+  d<-cbind(col,g)
+  m<-sapply(unique(factor(pair_matrix)), function(x) mean(d[d$g==x,1]))
+  names(m)=unique(factor(pair_matrix))
+  p<-apply(pair_matrix,2,function(x) log2(m[x[1]]/m[x[2]]))
+  names(p)=apply(pair_matrix,2,function(x) paste(x[1],x[2],"fold_change",sep="."))
+  r=cbind(t(m),t(p))
+  as.data.frame(r)
+}
+
+#Select valid sequences and groups       
+AA_Comp_10<-AA_Comp_10 %>% 
+   filter(Seq.pass)  %>%
+   filter(Group.pass >= 0.8)%>% 
+   group_by(pub_og_id)%>%
+   filter(n()>=30) # eliminate groups erroneusly parsed
+
 Res<-data.frame()
 myList<-list()
                   
 AA = c("A","C","D","E","F","G","H","I","K","L","M","N","R","P","Q","S","T","Y","W","V")                 
-for (aa in AA){  
-df<-AA_Comp_10 %>% 
-   filter(Seq.pass)  %>%
-   filter(Group.pass >= 0.8)  %>% 
+for (aa in AA){
+#Calculate pvalues with the t-test
+  df1<-AA_Comp_10 %>% 
    group_by(pub_og_id) %>% 
-   filter(n()>=30) %>%
-   do(format_ttest(pairwise.t.test(.[[aa]],.[["Classification"]],p.adjust.method='none'))) %>%
-   mutate(.,AA=aa)
+   do(pairwise_ttest(.[,aa],.$Classification,pair_matrix)) %>%
+   mutate(.,AA=aa) 
+#Calculate fold change
+  df2<-AA_Comp_10 %>% 
+   group_by(pub_og_id) %>% 
+   do(pairwise_fold_change(.[,aa],.$Classification,pair_matrix))
 
-  myList[[length(myList)+1]] <- df #add df to myList 
+  myList[[length(myList)+1]] <- merge(df1,df2, by.x = "pub_og_id", 
+             by.y = "pub_og_id", all.x = TRUE, all.y = FALSE) #add merged df to myList 
 }
 Res<-do.call(rbind.data.frame,myList)
                   
