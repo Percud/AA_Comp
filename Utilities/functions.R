@@ -41,8 +41,8 @@ df<-AA_Comp_10 %>%
 Res<-do.call(rbind.data.frame,myList)
                   
 #correct pvalues for multiple tests
-pV<-AA_Comp_10[,grepl("pvalue", names(AA_Comp_10))]
-AA_Comp_10[, names(pV)]<-matrix(p.adjust(as.vector(as.matrix(pV))),ncol=ncol(pV))
+pV<-Res[,grepl("pvalue", names(Res))]
+Res[, names(pV)]<-matrix(p.adjust(as.vector(as.matrix(pV))),ncol=ncol(pV))
 
                            
                            
