@@ -13,14 +13,14 @@ AA_Comp_10$Group.pass<-ave(AA_Comp_10$Seq.pass,AA_Comp_10$pub_og_id,FUN=function
 
 #pairwise test
 pairwise=combn(Tax$name,2)                           
-format_ttest <- function (x,d){
+format_ttest <- function (x){
   #print(d)
-  try{
+
   p=x[['p.value']]
   m<-apply(pairwise , 2 , function (x) p[x[1],x[2]])
   names(m)<-apply(pairwise , 2, function (x) paste(x[1],x[2],'pvalue',sep="."))
   return(as.data.frame(t(m)))
-  }
+  
 }
                   
 Res<-data.frame()
@@ -33,7 +33,7 @@ df<-AA_Comp_10 %>%
    filter(Group.pass >= 0.8)  %>% 
    group_by(pub_og_id) %>% 
    filter(n()>=30) %>%
-   do(format_ttest(pairwise.t.test(.[[aa]],.[["Classification"]],p.adjust.method='none'),.[,"pub_og_id"])) %>%
+   do(format_ttest(pairwise.t.test(.[[aa]],.[["Classification"]],p.adjust.method='none'))) %>%
    mutate(.,AA=aa)
 
   myList[[length(myList)+1]] <- df #add df to myList 
