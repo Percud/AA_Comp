@@ -42,7 +42,10 @@ Res<-do.call(rbind.data.frame,myList)
                   
 #correct pvalues for multiple tests
 pV<-Res[,grepl("pvalue", names(Res))]
-Res[, names(pV)]<-matrix(p.adjust(as.vector(as.matrix(pV))),ncol=ncol(pV))
+p_adj=matrix(p.adjust(as.vector(as.matrix(pV))),ncol=ncol(pV))
+for(i in ncol(pV)){
+  Res[, names(pV)[i]]<-p_adj[,i]
+}
 
 #Add orthogroup description (og_name) after Res[,1] (pub_og_id)                 
 Res<-data.frame(Res[,1],data.frame(og_name=AA_Comp_10$og_name[match(Res$pub_og_id,AA_Comp_10$pub_og_id)]),Res[-1])                           
