@@ -24,7 +24,7 @@ pairwise_ttest<-function(col,g,pair_matrix){
 }
 
 #pairwise fold_change function     
-pairwise_fold_change<-function(col,g,pair_matrix){
+pairwise_Log2FC<-function(col,g,pair_matrix){
   d<-cbind(col,g)
   m<-sapply(unique(factor(pair_matrix)), function(x) mean(d[d$g==x,1]))
   names(m)=unique(factor(pair_matrix))
@@ -47,13 +47,13 @@ myList<-list()
 AA = c("A","C","D","E","F","G","H","I","K","L","M","N","P","Q","R","S","T","V","W","Y")                 
 for (aa in AA){
 #Calculate pvalues (t-test) and fold change per groups
-  df1<-AA_Comp_10 %>% 
+  df<-AA_Comp_10 %>% 
    group_by(pub_og_id) %>% 
-   group_modify(~ cbind(pairwise_ttest(.[,aa],.$Classification,pair_matrix),
-                        pairwise_fold_change(.[,aa],.$Classification,pair_matrix))) %>% 
-   mutate (.,AA=aa)
+   group_modify(~ cbind(data.frame(AA=aa),
+                        pairwise_ttest(.[,aa],.$Classification,pair_matrix),
+                        pairwise_Log2FC(.[,aa],.$Classification,pair_matrix))) %>% 
     
-   myList[[length(myList)+1]] <- df1
+   myList[[length(myList)+1]] <- df
 }
 Res<-do.call(rbind.data.frame,myList)
                   
