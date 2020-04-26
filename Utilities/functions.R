@@ -11,10 +11,14 @@ AA_Comp_10$Seq.pass<-with(AA_Comp_10, width>=g_median-g_median*0.15 & width<=g_m
 AA_Comp_10$Group.pass<-ave(AA_Comp_10$Seq.pass,AA_Comp_10$pub_og_id,FUN=function (x) sum(x)/length(x))
 
 pair_matrix=combn(Tax$name,2) 
-#pairwise t.test function                         
+#pairwise t.test function   
+my.t.test.p.value <- function(...) {
+    obj<-try(t.test(...), silent=TRUE)
+    if (is(obj, "try-error")) return(NA) else return(obj$p.value)
+}
 pairwise_ttest<-function(col,g,pair_matrix){
   m<-cbind(col,g)
-  r<-apply(pair_matrix,2,function(x) t.test(m[m$g==x[1],1],m[m$g==x[2],1])$p.value)
+  r<-apply(pair_matrix,2,function(x) my.t.test.p.value(m[m$g==x[1],1],m[m$g==x[2],1]))
   names(r)=apply(pair_matrix,2,function(x) paste(x[1],x[2],"pvalue",sep="."))
   as.data.frame(t(r))
 }
@@ -40,20 +44,22 @@ AA_Comp_10<-AA_Comp_10 %>%
 Res<-data.frame()
 myList<-list()
                   
-AA = c("A","C","D","E","F","G","H","I","K","L","M","N","R","P","Q","S","T","Y","W","V")                 
+AA = c("A","C","D","E","F","G","H","I","K","L","M","N","P","Q","R","S","T","V","W","Y")                 
 for (aa in AA){
-#Calculate pvalues with the t-test
+#Calculate pvalues (t-test) and fold change per groups
   df1<-AA_Comp_10 %>% 
    group_by(pub_og_id) %>% 
-   do(pairwise_ttest(.[,aa],.$Classification,pair_matrix)) %>%
-   mutate(.,AA=aa) 
+   group_modify(~ pairwise_ttest(.[,aa],.$Classification,pair_matrix)) %>%
+   group_modify(~ mutate (.,AA=aa)) %>%
+   group_modify(~ pairwise_fold_change(.[,aa],.$Classification,pair_matrix)) 
+  #mutate(.,AA=aa) 
 #Calculate fold change
-  df2<-AA_Comp_10 %>% 
-   group_by(pub_og_id) %>% 
-   do(pairwise_fold_change(.[,aa],.$Classification,pair_matrix))
-
-  myList[[length(myList)+1]] <- merge(df1,df2, by.x = "pub_og_id", 
-             by.y = "pub_og_id", all.x = TRUE, all.y = FALSE) #add merged df to myList 
+#  df2<-AA_Comp_10 %>% 
+#   group_by(pub_og_id) %>% 
+#   do(pairwise_fold_change(.[,aa],.$Classification,pair_matrix))
+  myList[[length(myList)+1]] <- df1
+#  myList[[length(myList)+1]] <- merge(df1,df2, by.x = "pub_og_id", 
+#             by.y = "pub_og_id", all.x = TRUE, all.y = FALSE) #add merged df to myList 
 }
 Res<-do.call(rbind.data.frame,myList)
                   
