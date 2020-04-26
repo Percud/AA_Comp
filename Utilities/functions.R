@@ -49,17 +49,11 @@ for (aa in AA){
 #Calculate pvalues (t-test) and fold change per groups
   df1<-AA_Comp_10 %>% 
    group_by(pub_og_id) %>% 
-   group_modify(~ pairwise_ttest(.[,aa],.$Classification,pair_matrix)) %>%
-   group_modify(~ mutate (.,AA=aa)) %>%
-   group_modify(~ pairwise_fold_change(.[,aa],.$Classification,pair_matrix)) 
-  #mutate(.,AA=aa) 
-#Calculate fold change
-#  df2<-AA_Comp_10 %>% 
-#   group_by(pub_og_id) %>% 
-#   do(pairwise_fold_change(.[,aa],.$Classification,pair_matrix))
-  myList[[length(myList)+1]] <- df1
-#  myList[[length(myList)+1]] <- merge(df1,df2, by.x = "pub_og_id", 
-#             by.y = "pub_og_id", all.x = TRUE, all.y = FALSE) #add merged df to myList 
+   group_modify(~ cbind(pairwise_ttest(.[,aa],.$Classification,pair_matrix),
+                        pairwise_fold_change(.[,aa],.$Classification,pair_matrix))) %>% 
+   mutate (.,AA=aa)
+    
+   myList[[length(myList)+1]] <- df1
 }
 Res<-do.call(rbind.data.frame,myList)
                   
@@ -67,9 +61,11 @@ Res<-do.call(rbind.data.frame,myList)
 pV<-Res[,grepl("pvalue", names(Res))]
 p_adj=matrix(p.adjust(as.vector(as.matrix(pV))),ncol=ncol(pV))
 for(i in ncol(pV)){
-  Res[, names(pV)[i]]<-p_adj[,i]
+  Res[ , names(pV)[i] ]<-p_adj[,i]
 }
 
 #Add orthogroup description (og_name) after Res[,1] (pub_og_id)                 
-Res<-data.frame(Res[,1],data.frame(og_name=AA_Comp_10$og_name[match(Res$pub_og_id,AA_Comp_10$pub_og_id)]),Res[-1])                           
+Res<-data.frame(Res[,1],
+                data.frame(og_name=AA_Comp_10$og_name[match(Res$pub_og_id,AA_Comp_10$pub_og_id)]),
+                Res[-1])                           
                            
