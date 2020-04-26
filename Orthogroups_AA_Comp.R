@@ -8,9 +8,9 @@ Tax=list(id=c(8457,40674,7898),name=c("Sauropsida","Mammalia","Actinopterygii"))
 
 myParseOrthoFastaNames<-function(x)
 {
-    regex='^(\\S+).*?(\\{.*\\})'    #(id) (def) /def is in JSON format: {...}/
+    regex='^(\\S+)\\s+\\{*(.*\\S+)\\}*'    #(id) (def) /def is in JSON format: {...}/
     id<-sub(regex,'\\1',x)         #vector of ids
-    def<-sub(regex,'\\2',x)        #vector of def         
+    def<-sub(regex,'\\{\\2\\}',x)  #vector of def         
     df<-do.call(rbind.data.frame,lapply(def,fromJSON)) #apply fromJSON to def, convert in a data.frame 
  return(data.frame("seq_id"=id, df))
 }    
