@@ -1,3 +1,4 @@
+library(dplyr)
 
 #add median per group (same pub_og_id)
 
@@ -51,7 +52,7 @@ for (aa in AA){
    group_by(pub_og_id) %>% 
    group_modify(~ cbind(data.frame(AA=aa),
                         pairwise_ttest(.[,aa],.$Classification,pair_matrix),
-                        pairwise_Log2FC(.[,aa],.$Classification,pair_matrix))) %>% 
+                        pairwise_Log2FC(.[,aa],.$Classification,pair_matrix)))
     
    myList[[length(myList)+1]] <- df
 }
