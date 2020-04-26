@@ -10,7 +10,7 @@ myParseOrthoFastaNames<-function(x)
 {
     regex='^(\\S+)\\s+\\{*(.*\\S+)\\}*'    #(id) (def) /def is in JSON format: {...}/
     id<-sub(regex,'\\1',x)         #vector of ids
-    def<-sub(regex,'\\{\\2\\}',x)  #vector of def         
+    def<-sub(regex,'\\{\\2\\}',x)  #vector of def (add missing {...})        
     df<-do.call(rbind.data.frame,lapply(def,fromJSON)) #apply fromJSON to def, convert in a data.frame 
  return(data.frame("seq_id"=id, df))
 }    
