@@ -19,7 +19,7 @@ Seq_df<-data.frame() # main dataframe
 myList<-list()
 
 for(n in Tax$name){
-    fname<-paste0("data/",n,"10.fa")
+    fname<-paste0("data/",n,".fa")
     seq<-readAAStringSet(fname)
     f<-alphabetFrequency(seq)
    
