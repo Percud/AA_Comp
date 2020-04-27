@@ -11,6 +11,10 @@ AA_Comp_10$Seq.pass<-with(AA_Comp_10, width>=g_median-g_median*0.15 & width<=g_m
 #fraction of group genes with Seq.pass = TRUE
 AA_Comp_10$Group.pass<-ave(AA_Comp_10$Seq.pass,AA_Comp_10$pub_og_id,FUN=function (x) sum(x)/length(x))
 
+#add median per group (same pub_og_id), Seq.pass (sequences comprised in 15% of the group median), Group.pass (orthogroups with 80% sequences with Seq.pass = TRUE)
+                           
+AA%>%group_by(pub_og_id)%>%mutate(median_width=median(width),Seq.pass=(width>=(median_width-median(width)*0.15) & width<=(median_width+median(width)*0.15)),Group.pass=((sum(Seq.pass)/length(Seq.pass))>=0.8))
+                           
 pair_matrix=combn(Tax$name,2) 
 #pairwise t.test function   
 my.t.test.p.value <- function(...) {
