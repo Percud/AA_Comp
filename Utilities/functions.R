@@ -13,7 +13,11 @@ AA_Comp_10$Group.pass<-ave(AA_Comp_10$Seq.pass,AA_Comp_10$pub_og_id,FUN=function
 
 #add median per group (same pub_og_id), Seq.pass (sequences comprised in 15% of the group median), Group.pass (orthogroups with 80% sequences with Seq.pass = TRUE)
                            
-AA%>%group_by(pub_og_id)%>%mutate(median_width=median(width),Seq.pass=(width>=(median_width-median(width)*0.15) & width<=(median_width+median(width)*0.15)),Group.pass=((sum(Seq.pass)/length(Seq.pass))>=0.8))
+AA%>%group_by(pub_og_id)%>%
+     mutate(median_width=median(width), 
+            Seq.pass=( abs(width-median_width) <= median_width*0.2 ),
+            Group.f=mean(Seq.pass), 
+            Group.pass=(Group.f>=0.75) )
                            
 pair_matrix=combn(Tax$name,2) 
 #pairwise t.test function   
