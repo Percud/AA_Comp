@@ -69,7 +69,7 @@ Res<-do.call(rbind.data.frame,myList)
 #correct pvalues for multiple tests
 pV<-Res[,grepl("pvalue", names(Res))]
 p_adj=matrix(p.adjust(as.vector(as.matrix(pV))),ncol=ncol(pV))
-for(i in ncol(pV)){
+for(i in 1:ncol(pV)){
   Res[ , names(pV)[i] ]<-p_adj[,i]
 }
 
