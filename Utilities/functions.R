@@ -26,21 +26,19 @@ my.t.test.p.value <- function(...) {
     if (is(obj, "try-error")) return(NA) else return(obj$p.value)
 }
 pairwise_ttest<-function(col,g,pair_matrix){
-  m<-cbind(col,g)
-  r<-apply(pair_matrix,2,function(x) my.t.test.p.value(m[m$g==x[1],1],m[m$g==x[2],1]))
-  names(r)=apply(pair_matrix,2,function(x) paste(x[1],x[2],"pvalue",sep="."))
-  as.data.frame(t(r))
+  r<-apply(pair_matrix,2,function(x) my.t.test.p.value(col[g==x[1]],col[g==x[2]]))
+  names(r)<-apply(pair_matrix,2,function(x) paste(x[1],x[2],"pvalue",sep="."))
+  return(t(r))
 }
 
 #pairwise fold_change function     
 pairwise_Log2FC<-function(col,g,pair_matrix){
-  d<-cbind(col,g)
-  m<-sapply(unique(factor(pair_matrix)), function(x) mean(d[d$g==x,1]))
-  names(m)=unique(factor(pair_matrix))
-  p<-apply(pair_matrix,2,function(x) log2(m[x[1]]/m[x[2]]))
-  names(p)=apply(pair_matrix,2,function(x) paste(x[1],x[2],"fold_change",sep="."))
-  r=cbind(t(m),t(p))
-  as.data.frame(r)
+  m<-sapply(unique(factor(pair_matrix)), function(x) mean(col[g==x]))
+  names(m)<-unique(factor(pair_matrix))
+  f<-apply(pair_matrix,2,function(x) log2(m[x[1]]/m[x[2]]))
+  names(f)<-apply(pair_matrix,2,function(x) paste(x[1],x[2],"fold_change",sep="."))
+  r<-cbind(t(m),t(f))
+  return(r)
 }
 
 #Select valid sequences and groups       
@@ -53,14 +51,16 @@ AA_Comp_10<-AA_Comp_10 %>%
 Res<-data.frame()
 myList<-list()
                   
-AA = c("A","C","D","E","F","G","H","I","K","L","M","N","P","Q","R","S","T","V","W","Y")                 
+AA = names(AMINO_ACID_CODE[1:20])                 
 for (aa in AA){
 #Calculate pvalues (t-test) and fold change per groups
   df<-AA_Comp_10 %>% 
-   group_by(pub_og_id) %>% 
-   group_modify(~ cbind(data.frame(AA=aa),
-                        pairwise_ttest(.[,aa],.$Classification,pair_matrix),
-                        pairwise_Log2FC(.[,aa],.$Classification,pair_matrix)))
+      group_by(pub_og_id) %>% 
+      group_map(~ cbind(.y,AA=aa,
+                  pairwise_ttest(.[[aa]],.[["Classification"]],pair_matrix),
+                  pairwise_Log2FC(.[[aa]],.[["Classification"]],pair_matrix))) 
+    
+    myList=c(myList , l) #apped l to the list
     
    myList[[length(myList)+1]] <- df
 }
@@ -74,7 +74,7 @@ for(i in 1:ncol(pV)){
 }
 
 #Add orthogroup description (og_name) after Res[,1] (pub_og_id)                 
-Res<-data.frame(Res[,1],
-                data.frame(og_name=AA_Comp_10$og_name[match(Res$pub_og_id,AA_Comp_10$pub_og_id)]),
-                Res[-1])                           
+Res<-cbind(Res[1],
+           og_name=AAComp$og_name[match(Res$pub_og_id,AAComp$pub_og_id)],
+           Res[-1])                           
                            
