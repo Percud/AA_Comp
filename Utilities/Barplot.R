@@ -2,10 +2,9 @@
 Tax=list(id=c(8457,40674,7898),name=c("Sauropsida","Mammalia","Actinopterygii"))
 pair_matrix=combn(Tax$name,2) 
 
-colnames(Res)[c(7,8,9)]<-c("Sauropsida.mean","Mammalia.mean","Actinopterygii.mean")
 
 for(i in 1:ncol(pair_matrix)){
-  m<-c(paste0(pair_matrix[1,i],".mean"),paste0(pair_matrix[2,i],".mean"))
+  m<-c(pair_matrix[1,i],pair_matrix[2,i])
   pv<-(paste0(pair_matrix[1,i],".",pair_matrix[2,i],".pvalue"))
   FC<-(paste0(pair_matrix[1,i],".",pair_matrix[2,i],".fold_change"))
   
