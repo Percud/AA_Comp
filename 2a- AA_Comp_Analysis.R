@@ -11,7 +11,7 @@ source("Functions.R")
 #determine significant changes across vertebrate groups: Sauropsida, Mammalia, Actinopterygii
 
 
-Seq_df<-data.frame() # main dataframe
+AA_Comp_nofilter<-data.frame() # main dataframe
 myList<-list()
 
 for(n in Tax$name){
@@ -23,21 +23,21 @@ for(n in Tax$name){
   myList[[length(myList)+1]] <- df #add df to myList
   print(paste(n,length(seq),"sequences"))
 }
-Seq_df<-do.call(rbind.data.frame,myList)
-write.csv(Seq_df,"AA_Comp.csv", row.names = FALSE)
+AA_Comp_nofilter<-do.call(rbind.data.frame,myList)
+write.csv(AA_Comp_nofilter,"AA_Comp_nofilter.csv", row.names = FALSE)
 
 #Add median per group (same pub_og_id), Seq.pass (sequences comprised in 20% of the group median), Group.pass (orthogroups with 75% sequences with Seq.pass = TRUE)
 
-Seq_df<-Seq_df%>%group_by(pub_og_id)%>%
+AA_Comp_nofilter<-AA_Comp_nofilter%>%group_by(pub_og_id)%>%
   mutate(median_width=median(width), 
          Seq.pass=( abs(width-median_width) <= median_width*0.2 ),
          Group.f=mean(Seq.pass), 
          Group.pass=(Group.f>=0.75) )
 
 #Create a new dataframe (AA_Comp) containing orthogroups with Group.pass>=0.75
-AA_Comp<-Seq_df%>%filter(Seq.pass & Group.pass)%>% group_by(Classification)%>%group_by(pub_og_id)%>%filter(n()>=10)
+AA_Comp<-AA_Comp_nofilter%>%filter(Seq.pass & Group.pass)%>% group_by(Classification)%>%group_by(pub_og_id)%>%filter(n()>=10)
 
-write.csv(AA_Comp, file = "AA_Comp_Gp.csv", row.names=FALSE)
+write.csv(AA_Comp, file = "AA_Comp.csv", row.names=FALSE)
 
 #Create a new dataframe (Res) with the values of pvalue (T-test) and fold change, obtained by pairwise comparisons between the three different classifications
 
