@@ -12,7 +12,7 @@ aln_out<-paste0(og_id,"_aln")
 tree_out<-paste0(og_id,"_tree")
 
 
-seq=mySelectSeq(AAComp,og_id,TRUE)
+seq=mySelectSeq(AA_Comp,og_id,TRUE)
 #Eliminate seq with 'X' in the sequence
 seq<-seq[-grep("X",seq)]
 
