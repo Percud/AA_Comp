@@ -34,7 +34,7 @@ AA_Comp_nofilter<-AA_Comp_nofilter%>%group_by(pub_og_id)%>%
          Group.f=mean(Seq.pass), 
          Group.pass=(Group.f>=0.75) )
 
-#Create a new dataframe (AA_Comp) containing orthogroups with Group.pass>=0.75
+#Create a new dataframe (AA_Comp) containing valid orthogroups
 AA_Comp<-AA_Comp_nofilter%>%filter(Seq.pass & Group.pass)%>% group_by(Classification)%>%group_by(pub_og_id)%>%filter(n()>=10)
 
 write.csv(AA_Comp, file = "AA_Comp.csv", row.names=FALSE)
@@ -75,7 +75,7 @@ Res<-data.frame(Res[,1],
                 data.frame(og_name=AA_Comp$og_name[match(Res$pub_og_id,AA_Comp$pub_og_id)]),
                 Res[-1])                           
 
-#Limit p-value<=2e-16 and fold change (abs value)>=1.5
+#Limit p-value<=1e-16 and fold change (abs value)>=1
 
 Res<-Res%>%mutate(Pvalue.pass= Sauropsida.Mammalia.pvalue<=1e-16 | 
                      Sauropsida.Actinopterygii.pvalue<=1e-16 | 
