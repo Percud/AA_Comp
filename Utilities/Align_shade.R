@@ -6,7 +6,7 @@ library(taxizedb)
 aa="KIN"
 og_id="271347at7742"
 max_seq=60
-
+max_id=0.9 #max id in clusters
 
 aln_out<-paste0(og_id,"_aln")
 tree_out<-paste0(og_id,"_tree")
@@ -49,7 +49,7 @@ names(seq)<-sapply(1:length(seq), function(i) paste0("X",i," ",tax[i]))
 
 
 #select a non reduntant dataset (id<90%)
-seq<-mySelectClusters(seq,0.9)
+seq<-mySelectClusters(seq,max_id)
 
 
 #select max seq
