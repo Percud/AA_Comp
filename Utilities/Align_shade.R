@@ -26,7 +26,7 @@ mySelectSeq<-function(t,og,pass){
   return(s)
 }
 
-mySelectClusers<-function(seq,max_id){
+mySelectClusters<-function(seq,max_id){
   #Clustering with DECIPHER
   inexact <- IdClusters(myXStringSet=seq, method="inexact", cutoff=(1-max_id))
   #One sequence per cluster
@@ -49,7 +49,7 @@ names(seq)<-sapply(1:length(seq), function(i) paste0("X",i," ",tax[i]))
 
 
 #select a non reduntant dataset (id<90%)
-seq<-mySelectClusers(seq,0.9)
+seq<-mySelectClusters(seq,0.9)
 
 
 #select max seq
