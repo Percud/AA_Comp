@@ -22,13 +22,13 @@ The developed scripts are used for:
 - dplyr
 ```
 ### GET ORTHOGROUPS INFORMATION AND FASTA SEQUENCES FROM [OrthoDB](https://www.orthodb.org/):
-Run script [1- Get_universal_singlecopy_orthogroups.R](https://github.com/Percud/AA_Comp/blob/master/1-%20Get_universal_singlecopy_orthogroups.R).
+Run script [Get_universal_singlecopy_orthogroups.R](https://github.com/Percud/AA_Comp/blob/master/Get_universal_singlecopy_orthogroups.R).
 The program recovers all the orthogroups from the server OrthoDB using API. Parameters: *vertebrate level, single copy gene, orthogroup present in 90% of the species*. 
 The program creates a folder named `data` containing three files `.fa` with FASTA sequences.
 
 ### OBTAIN AA COUNT OF ORTHOGROUPS AND ORGANIZE DATA INTO DATAFRAMES 
-Run script [2a- AA_Comp_Analysis.R](./2a-%20AA_Comp_Analysis.R).
-The necessary *funtions* are recovered ([2b- Functions.R](https://github.com/Percud/AA_Comp/blob/master/2b-%20Functions.R)). A dataframe `AA_Comp_nofilter` is created in which the downloaded data are organized. 
+Run script [AA_Comp_Analysis.R](https://github.com/Percud/AA_Comp/blob/master/AA_Comp_Analysis.R).
+The necessary *funtions* are recovered ([2b- Functions.R](https://github.com/Percud/AA_Comp/blob/master/Functions.R)). A dataframe `AA_Comp_nofilter` is created in which the downloaded data are organized. 
 Odd data are filtered out and a new dataframe `AA_Comp` is created.
 
 ### UNDERSTANDING THE DATASET ***AA_Comp***
