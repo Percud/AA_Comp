@@ -14,7 +14,7 @@ The developed scripts are used for:
 
 # Usage
 ### [DOWNLOAD *R* SCRIPTS](https://github.com/Percud/AA_Comp/archive/master.zip)
-### REQUIRED *R* PACKAGES:
+REQUIRED *R* PACKAGES:
 ```
 - rjson
 - httr
@@ -45,7 +45,9 @@ The dataset `AA_Comp` contains records of orthologous proteins of the database O
 - name of each AA: count in the sequence
 
 
-![IMG1](./Images/Screen%20DF.png)
+![IMG1](./Images/Screen%20DF%201.png)
+
+![IMG2](./Images/Screen%20DF%202.png)
 
 
 ### STATISTICAL ANLYSIS: ***T-TEST*** AND ***Log2 FOLD CHANGE***
@@ -67,11 +69,11 @@ The program creates a new dataframe `Res` with ***pvalue*** (t-test) and ***Log2
 
 ## ANNOTATION AND VISUALIZATION OF RESULTS
 ### MULTIPLE SEQUENCE ALIGNMENT
-Install *R* packages: 
+Reqired *R* packages: 
 ```
 - DECIPHER
 - msa
-- odseq
+- odseq### 
 - taxizedb
 ```
 Source script [Align_shade.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/Align_shade.R). Choose the amino acid/amino acids to focus on and write it/them in `aa` . Choose the `og_id` of the orthogroup to align. Example: 
@@ -89,7 +91,7 @@ Bar plots can be exported from *R* as *image* files.
 
 ![IMG5](./Images/Barplot.jpg)
 
-### BOX PLOTS 
+### BOX PLOTS ### 
 Install *R* packages: 
 ```
 - ggplot2
@@ -97,10 +99,10 @@ Install *R* packages:
 - gridExtra
 - grid
 ```
-Source script [Boxplot.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/Boxplot.R). Choose the `pub_og_id` of the orthogroup to focus on and write it in `args`. Run the script. The program creates **box plots** of **amino acids distribution** for each class in *PDF* files. NSTALL 
+Source script [Boxplot.R](https://github.com/Percu### d/AA_Comp/blob/master/Utilities/Boxplot.R). Choose the `pub_og_id` of the orthogroup to focus on and write it in `args`. Run the script. The program creates **box plots** of **amino acids distribution** for each class in *PDF* files. NSTALL 
 
 ![IMG6](./Images/box.png)
-
+Install
 ### HEATMAP
 
 ### VOLCANO PLOTS
@@ -109,7 +111,7 @@ Install *R* packages:
 - EnhancedVolcano
 - Biostrings
 ```
-Run script [VolcanoPlot.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/VolcanoPlot.R). The program creates *PDF* files with the **pairwise comparison plot** related to a **single amino acid**.
+Run script [VolcanoPlot.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/VolcanoPlot.R). The program creates *PDF* files with the **pairwise comparison plot** related to a **si### ngle amino acid**.
 
 ![IMG8](./Images/volcano.png)
 
