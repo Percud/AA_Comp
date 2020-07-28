@@ -105,7 +105,7 @@ Required *R* packages:
 - EnhancedVolcano
 - Biostrings
 ```
-Run script [VolcanoPlot.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/VolcanoPlot.R). The program creates *PDF* files with the **pairwise comparison plot** related to a **si### ngle amino acid**.
+Run script [VolcanoPlot.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/VolcanoPlot.R). The program creates *PDF* files with the **pairwise comparison plot** related to a **single amino acid**.
 
 ![IMG8](./Images/volcano.png)
 
