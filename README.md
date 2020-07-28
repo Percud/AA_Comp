@@ -14,7 +14,7 @@ The developed scripts are used for:
 
 # Usage
 ### [DOWNLOAD *R* SCRIPTS](https://github.com/Percud/AA_Comp/archive/master.zip)
-REQUIRED *R* PACKAGES:
+Required *R* packages:
 ```
 - rjson
 - httr
@@ -28,7 +28,7 @@ The program creates a folder named `data` containing three files `.fa` with FAST
 
 ### OBTAIN AA COUNT OF ORTHOGROUPS AND ORGANIZE DATA INTO DATAFRAMES 
 Run script [AA_Comp_Analysis.R](https://github.com/Percud/AA_Comp/blob/master/AA_Comp_Analysis.R).
-The necessary *functions* are recovered ([Functions.R](https://github.com/Percud/AA_Comp/blob/master/Functions.R)). A dataframe `AA_Comp_nofilter` is created in which the downloaded data are organized. 
+REQUIREDThe necessary *functions* are recovered ([Functions.R](https://github.com/Percud/AA_Comp/blob/master/Functions.R)). A dataframe `AA_Comp_nofilter` is created in which the downloaded data are organized. 
 Odd data are filtered out and a new dataframe `AA_Comp` is created.
 
 ### UNDERSTANDING THE DATASET ***AA_Comp***
@@ -49,7 +49,7 @@ The dataset `AA_Comp` contains records of orthologous proteins of the database O
 
 ![IMG2](./Images/Screen%20DF%202.png)
 
-
+REQUIRED
 ### STATISTICAL ANLYSIS: ***T-TEST*** AND ***Log2 FOLD CHANGE***
 In the same script [2a- AA_Comp_Analysis.R](https://github.com/Percud/AA_Comp/blob/master/2a-%20AA_Comp_Analysis.R), the instruction to perform the **statistical analysis** of data is given. 
 The program creates a new dataframe `Res` with ***pvalue*** (t-test) and ***Log2 fold change*** results, obtained by **pairwise comparisons** between the three different classes.
@@ -69,12 +69,12 @@ The program creates a new dataframe `Res` with ***pvalue*** (t-test) and ***Log2
 
 ## ANNOTATION AND VISUALIZATION OF RESULTS
 ### MULTIPLE SEQUENCE ALIGNMENT
-Reqired *R* packages: 
+Required *R* packages: 
 ```
 - DECIPHER
 - msa
 - odseq### 
-- taxizedb
+- taxizedbREQUIRED
 ```
 Source script [Align_shade.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/Align_shade.R). Choose the amino acid/amino acids to focus on and write it/them in `aa` . Choose the `og_id` of the orthogroup to align. Example: 
 ```
@@ -97,13 +97,13 @@ Install *R* packages:
 - ggplot2
 - dplyr
 - gridExtra
-- grid
+- gridREQUIRED
 ```
 Source script [Boxplot.R](https://github.com/Percu### d/AA_Comp/blob/master/Utilities/Boxplot.R). Choose the `pub_og_id` of the orthogroup to focus on and write it in `args`. Run the script. The program creates **box plots** of **amino acids distribution** for each class in *PDF* files. NSTALL 
 
 ![IMG6](./Images/box.png)
 Install
-### HEATMAP
+### HEATMAPREQUIRED
 
 ### VOLCANO PLOTS
 Install *R* packages: 
