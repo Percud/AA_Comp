@@ -7,7 +7,7 @@ We considered three classes: *Actinopterygii, Sauropsida* and *Mammalia*. The pr
 
 The developed scripts are used for:
 
-- Recovering data
+- Retrieving data
 - Filtering and organizing data
 - Conducting statistical analysis 
 - Plotting analysis results
