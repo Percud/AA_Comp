@@ -45,9 +45,7 @@ The dataset `AA_Comp` contains records of orthologous proteins of the database O
 - name of each AA: count in the sequence
 
 
-![IMG1](./Images/Screen%20DF%201.png)
-
-![IMG2](./Images/Screen%20DF%202.png)
+![IMG1](./Images/Screen%20DF.png)
 
 REQUIRED
 ### STATISTICAL ANLYSIS: ***T-TEST*** AND ***Log2 FOLD CHANGE***
@@ -63,9 +61,7 @@ The program creates a new dataframe `Res` with ***pvalue*** (t-test) and ***Log2
 - `Sauropsida/Mammalia/Actinopterygii`: mean of the relative AA count in the orthogroup
 - `.fold_change`: value of pairwise *Log2 fold change*
 
-![IMG3](./Images/Screen%20Res%201.png)
-
-![IMG4](./Images/Screen%20Res%202.png)
+![IMG3](./Images/Screen%20Res.png)
 
 ## ANNOTATION AND VISUALIZATION OF RESULTSREQUIRED
 ### MULTIPLE SEQUENCE ALIGNMENT
