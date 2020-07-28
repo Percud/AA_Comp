@@ -93,14 +93,14 @@ Required *R* packages:
 - gridExtra
 - grid
 ```
-Source script [Boxplot.R](https://github.com/Percu### d/AA_Comp/blob/master/Utilities/Boxplot.R). Choose the `pub_og_id` of the orthogroup to focus on and write it in `args`. Run the script. The program creates **box plots** of **amino acids distribution** for each class in *PDF* files. NSTALL 
+Source script [Boxplot.R](https://github.com/Percu### d/AA_Comp/blob/master/Utilities/Boxplot.R). Choose the `pub_og_id` of the orthogroup to focus on and write it in `args`. Run the script. The program creates **box plots** of **amino acids distribution** for each class in *PDF* files.
 
 ![IMG6](./Images/box.png)
-Install
+
 ### HEATMAP
 
 ### VOLCANO PLOTS
-Install *R* packages: 
+Required *R* packages: 
 ```
 - EnhancedVolcano
 - Biostrings
