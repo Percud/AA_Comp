@@ -21,9 +21,9 @@ The developed scripts are used for:
 - Biostrings
 - dplyr
 ```
-### GET ORTHOGROUPS INFORMATION AND FASTA SEQUENCES FROM [OrthoDB](https://www.orthodb.org/):
+### GET ORTHOGROUPS INFORMATION AND FASTA SEQUENCES FROM OrthoDB:
 Run script [Get_universal_singlecopy_orthogroups.R](https://github.com/Percud/AA_Comp/blob/master/Get_universal_singlecopy_orthogroups.R).
-The program recovers all the orthogroups from the server OrthoDB using API. Parameters: *vertebrate level, single copy gene, orthogroup present in 90% of the species*. 
+The program recovers all the orthogroups from the server [OrthoDB](https://www.orthodb.org/) using API. Parameters: *vertebrate level, single copy gene, orthogroup present in 90% of the species*. 
 The program creates a folder named `data` containing three files `.fa` with FASTA sequences.
 
 ### OBTAIN AA COUNT OF ORTHOGROUPS AND ORGANIZE DATA INTO DATAFRAMES 
