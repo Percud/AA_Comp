@@ -9,7 +9,7 @@ The developed scripts are used for:
 
 - Retrieving data
 - Filtering and organizing data
-- Conducting statistical analysis REQUIRED
+- Conducting statistical analysis
 - Plotting analysis results
 
 # Usage
@@ -24,12 +24,11 @@ Required *R* packages:
 ### 1 - GET ORTHOGROUPS INFORMATION AND FASTA SEQUENCES FROM OrthoDB:
 Run script [Get_universal_singlecopy_orthogroups.R](https://github.com/Percud/AA_Comp/blob/master/Get_universal_singlecopy_orthogroups.R).
 The program recovers all the orthogroups from the server [OrthoDB](https://www.orthodb.org/) using API. Parameters: *vertebrate level, single copy gene, orthogroup present in 90% of the species*. 
-The program creates a folder named `data` containing three files `.fa` with FASTA sequences.
+The program creates a folder named `data` containing three files `.fa` with FASTA sequences (if a directory named `data`already exists it has to be renamed).
 
 ### 2 - OBTAIN AA COUNT OF ORTHOGROUPS AND ORGANIZE DATA INTO DATAFRAMES 
 Run script [AA_Comp_Analysis.R](https://github.com/Percud/AA_Comp/blob/master/AA_Comp_Analysis.R).
-REQUIREDThe necessary *functions* are recovered ([Functions.R](https://github.com/Percud/AA_Comp/blob/master/Functions.R)). A dataframe `AA_Comp_nofilter` is created in which the downloaded data are organized. 
-Odd data are filtered out and a new dataframe `AA_Comp` is created.
+The necessary *functions* are recovered ([Functions.R](https://github.com/Percud/AA_Comp/blob/master/Functions.R)). Output: `AA_Comp_nofilter` in which  downloaded data are organized; `AA_Comp` that is the filtered dataframe.
 
 ### UNDERSTANDING THE DATASET ***AA_Comp***
 The dataset `AA_Comp` contains records of orthologous proteins of the database OrthoDB. Below is a brief **description** of the 30 variables in the dataset:
@@ -47,7 +46,6 @@ The dataset `AA_Comp` contains records of orthologous proteins of the database O
 
 ![IMG1](./Images/Screen%20DF.png)
 
-REQUIRED
 ### STATISTICAL ANLYSIS: ***T-TEST*** AND ***Log2 FOLD CHANGE***
 In the same script [2a- AA_Comp_Analysis.R](https://github.com/Percud/AA_Comp/blob/master/2a-%20AA_Comp_Analysis.R), the instruction to perform the **statistical analysis** of data is given. 
 The program creates a new dataframe `Res` with ***pvalue*** (t-test) and ***Log2 fold change*** results, obtained by **pairwise comparisons** between the three different classes.
@@ -63,14 +61,14 @@ The program creates a new dataframe `Res` with ***pvalue*** (t-test) and ***Log2
 
 ![IMG3](./Images/Screen%20Res.png)
 
-## ANNOTATION AND VISUALIZATION OF RESULTSREQUIRED
+## ANNOTATION AND VISUALIZATION OF RESULTS
 ### MULTIPLE SEQUENCE ALIGNMENT
 Required *R* packages: 
 ```
 - DECIPHER
 - msa
 - odseq### 
-- taxizedbREQUIRED
+- taxizedb
 ```
 Source script [Align_shade.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/Align_shade.R). Choose the amino acid/amino acids to focus on and write it/them in `aa` . Choose the `og_id` of the orthogroup to align. Example: 
 ```
@@ -84,25 +82,25 @@ Run the script. The program takes the best sequences from each class to align an
 ### BAR PLOTS
 Run script [Barplot.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/Barplot.R). It creates **bar plots with vertical bars** based on **pairwise comparisons**.
 Bar plots can be exported from *R* as *image* files.
-REQUIRED
+
 ![IMG5](./Images/Barplot.jpg)
 
 ### BOX PLOTS ### 
-Install *R* packages: 
+Required *R* packages: 
 ```
 - ggplot2
 - dplyr
 - gridExtra
-- gridREQUIRED
+- grid
 ```
 Source script [Boxplot.R](https://github.com/Percu### d/AA_Comp/blob/master/Utilities/Boxplot.R). Choose the `pub_og_id` of the orthogroup to focus on and write it in `args`. Run the script. The program creates **box plots** of **amino acids distribution** for each class in *PDF* files. NSTALL 
 
 ![IMG6](./Images/box.png)
 Install
-### HEATMAPREQUIRED
+### HEATMAP
 
 ### VOLCANO PLOTS
-Install *R* packages: REQUIRED
+Install *R* packages: 
 ```
 - EnhancedVolcano
 - Biostrings
@@ -121,4 +119,4 @@ Run script [VolcanoPlot.R](https://github.com/Percud/AA_Comp/blob/master/Utiliti
 
 
 
-REQUIRED
+
