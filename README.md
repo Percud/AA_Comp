@@ -14,7 +14,7 @@ The developed scripts are used for:
 
 # Usage
 ### [DOWNLOAD *R* SCRIPTS](https://github.com/Percud/AA_Comp/archive/master.zip)
-### INSTALL *R* PACKAGES:
+### REQUIRED *R* PACKAGES:
 ```
 - rjson
 - httr
@@ -99,7 +99,7 @@ Install *R* packages:
 - gridExtra
 - grid
 ```
-Source script [Boxplot.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/Boxplot.R). Choose the `pub_og_id` of the orthogroup to focus on and write it in `args`. Run the script. The program creates **box plots** of **amino acids distribution** for each class in *PDF* files. 
+Source script [Boxplot.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/Boxplot.R). Choose the `pub_og_id` of the orthogroup to focus on and write it in `args`. Run the script. The program creates **box plots** of **amino acids distribution** for each class in *PDF* files. NSTALL 
 
 ![IMG6](./Images/box.png)
 
