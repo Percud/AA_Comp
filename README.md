@@ -62,23 +62,6 @@ The program creates a new dataframe `Res` with ***pvalue*** (t-test) and ***Log2
 ![IMG3](./Images/Screen%20Res.png)
 
 ## ANNOTATION AND VISUALIZATION OF RESULTS
-### MULTIPLE SEQUENCE ALIGNMENT
-Required *R* packages: 
-```
-- DECIPHER
-- msa
-- odseq
-- taxizedb
-```
-Source script [Align_shade.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/Align_shade.R). Choose the amino acid/amino acids to focus on and write it/them in `aa` . Choose the `og_id` of the orthogroup to align. Example: 
-```
-aa="CDEW"
-og_id="238395at7742"
-```
-Run the script. The program takes the best sequences from each class to align and creates four files: multiple alignment is the *PDF* file.
-
-![IMG7](./Images/align.png)
-
 ### BAR PLOTS
 Run script [Barplot.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/Barplot.R). It creates **bar plots with vertical bars** based on **pairwise comparisons**.
 Bar plots can be exported from *R* as *image* files.
@@ -109,7 +92,22 @@ Run script [VolcanoPlot.R](https://github.com/Percud/AA_Comp/blob/master/Utiliti
 
 ![IMG8](./Images/volcano.png)
 
+### MULTIPLE SEQUENCE ALIGNMENT
+Required *R* packages: 
+```
+- DECIPHER
+- msa
+- odseq
+- taxizedb
+```
+Source script [Align_shade.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/Align_shade.R). Choose the amino acid/amino acids to focus on and write it/them in `aa` . Choose the `og_id` of the orthogroup to align. Example: 
+```
+aa="CDEW"
+og_id="238395at7742"
+```
+Run the script. The program takes the best sequences from each class to align and creates four files: multiple alignment is the *PDF* file.
 
+![IMG7](./Images/align.png)
 
 
 
