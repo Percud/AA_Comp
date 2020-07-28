@@ -9,7 +9,7 @@ The developed scripts are used for:
 
 - Retrieving data
 - Filtering and organizing data
-- Conducting statistical analysis 
+- Conducting statistical analysis REQUIRED
 - Plotting analysis results
 
 # Usage
@@ -21,12 +21,12 @@ Required *R* packages:
 - Biostrings
 - dplyr
 ```
-### GET ORTHOGROUPS INFORMATION AND FASTA SEQUENCES FROM OrthoDB:
+### 1 - GET ORTHOGROUPS INFORMATION AND FASTA SEQUENCES FROM OrthoDB:
 Run script [Get_universal_singlecopy_orthogroups.R](https://github.com/Percud/AA_Comp/blob/master/Get_universal_singlecopy_orthogroups.R).
 The program recovers all the orthogroups from the server [OrthoDB](https://www.orthodb.org/) using API. Parameters: *vertebrate level, single copy gene, orthogroup present in 90% of the species*. 
 The program creates a folder named `data` containing three files `.fa` with FASTA sequences.
 
-### OBTAIN AA COUNT OF ORTHOGROUPS AND ORGANIZE DATA INTO DATAFRAMES 
+### 2 - OBTAIN AA COUNT OF ORTHOGROUPS AND ORGANIZE DATA INTO DATAFRAMES 
 Run script [AA_Comp_Analysis.R](https://github.com/Percud/AA_Comp/blob/master/AA_Comp_Analysis.R).
 REQUIREDThe necessary *functions* are recovered ([Functions.R](https://github.com/Percud/AA_Comp/blob/master/Functions.R)). A dataframe `AA_Comp_nofilter` is created in which the downloaded data are organized. 
 Odd data are filtered out and a new dataframe `AA_Comp` is created.
@@ -67,7 +67,7 @@ The program creates a new dataframe `Res` with ***pvalue*** (t-test) and ***Log2
 
 ![IMG4](./Images/Screen%20Res%202.png)
 
-## ANNOTATION AND VISUALIZATION OF RESULTS
+## ANNOTATION AND VISUALIZATION OF RESULTSREQUIRED
 ### MULTIPLE SEQUENCE ALIGNMENT
 Required *R* packages: 
 ```
@@ -88,7 +88,7 @@ Run the script. The program takes the best sequences from each class to align an
 ### BAR PLOTS
 Run script [Barplot.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/Barplot.R). It creates **bar plots with vertical bars** based on **pairwise comparisons**.
 Bar plots can be exported from *R* as *image* files.
-
+REQUIRED
 ![IMG5](./Images/Barplot.jpg)
 
 ### BOX PLOTS ### 
@@ -106,7 +106,7 @@ Install
 ### HEATMAPREQUIRED
 
 ### VOLCANO PLOTS
-Install *R* packages: 
+Install *R* packages: REQUIRED
 ```
 - EnhancedVolcano
 - Biostrings
@@ -125,4 +125,4 @@ Run script [VolcanoPlot.R](https://github.com/Percud/AA_Comp/blob/master/Utiliti
 
 
 
-
+REQUIRED
