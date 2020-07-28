@@ -28,7 +28,7 @@ The program creates a folder named `data` containing three files `.fa` with FAST
 
 ### OBTAIN AA COUNT OF ORTHOGROUPS AND ORGANIZE DATA INTO DATAFRAMES 
 Run script [AA_Comp_Analysis.R](https://github.com/Percud/AA_Comp/blob/master/AA_Comp_Analysis.R).
-The necessary *funtions* are recovered ([2b- Functions.R](https://github.com/Percud/AA_Comp/blob/master/Functions.R)). A dataframe `AA_Comp_nofilter` is created in which the downloaded data are organized. 
+The necessary *funtions* are recovered ([Functions.R](https://github.com/Percud/AA_Comp/blob/master/Functions.R)). A dataframe `AA_Comp_nofilter` is created in which the downloaded data are organized. 
 Odd data are filtered out and a new dataframe `AA_Comp` is created.
 
 ### UNDERSTANDING THE DATASET ***AA_Comp***
