@@ -82,9 +82,13 @@ og_id="238395at7742"
 ```
 Run the script. The program takes the best sequences from each class to align and it creates four files: multiple alignment is in *PDF* file.
 
+![IMG7](./Images/align.png)
+
 ### BAR PLOTS
 Run script [Barplot.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/Barplot.R). It creates **bar plots with vertical bars** based on **pairwise comparisons**.
 Bar plots can be exported from *R* as *image* files.
+
+![IMG5](./Images/Barplot.jpg)
 
 ### BOX PLOTS 
 Install *R* packages: 
@@ -96,6 +100,8 @@ Install *R* packages:
 ```
 Source script [Boxplot.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/Boxplot.R). Choose `pub_og_id` of the orthogroup to focus on and write it in `args`. Run the script. The program creates **box plots** of **amino acids distribution** for each class in *PDF* files. 
 
+![IMG6](./Images/box.png)
+
 ### HEATMAP
 
 ### VOLCANO PLOTS
@@ -105,6 +111,8 @@ Install *R* packages:
 - Biostrings
 ```
 Run script [VolcanoPlot.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/VolcanoPlot.R). The program creates *PDF* files with the **pairwise comparison plot** related to a **singol amino acid**.
+
+![IMG8](./Images/volcano.png)
 
 
 
