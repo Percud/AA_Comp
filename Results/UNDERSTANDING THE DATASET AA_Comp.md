@@ -9,7 +9,7 @@ The dataset `AA_Comp` contains records of orthologous proteins of the database O
 - `description`: short description of the ortholog group
 - `width`: sequence length
 - `seq_seq`: sequence string, without fasta-header 
-- name of each AA: count in the sequence
+- name of each AA: count in the sequence.
 
 
 ![IMG1](./Images/Screen%20DF.png)
