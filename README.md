@@ -81,7 +81,7 @@ Required *R* packages:
 - odseq
 - taxizedb
 ```
-Source script [Align_shade.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/Align_shade.R). Choose the amino acid/amino acids to focus on and write it/them in `aa` . Choose the `og_id` of the orthogroup to align. Example: 
+Source script [Align_shade.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/Align_shade.R). Edit the script writing: the amino acid/amino acids to focus on in `aa`, the `og_id` of the orthogroup to align. Example: 
 ```
 aa="CDEW"
 og_id="238395at7742"
