@@ -1,9 +1,9 @@
 # AA_Comp
-## EVOLUTIONARY CHANGES IN AMINO ACID COMPOSITION OF ORTHOLOGOUS GENES DURING VERTEBRATES EVOLUTION
+## EVOLUTIONARY CHANGES IN AMINO ACID COMPOSITION OF ORTHOLOGOUS GENES DURING VERTEBRATE EVOLUTION
 
-# Summary
-This project performs an analysis in *R* of amino acid composition of vertebrates orthologous proteins. 
-We considered three classes: *Actinopterygii, Sauropsida* and *Mammalia*. The project allows to work also with different types of classifications according to research needs. 
+# SUMMARY
+This project performs an analysis in *R* of amino acid composition of vertebrate orthologous proteins. 
+We considered three classes: *Actinopterygii, Sauropsida* and *Mammalia*. The program allows to work also with different types of classifications according to research needs. 
 
 The developed scripts are used for:
 
@@ -12,8 +12,9 @@ The developed scripts are used for:
 - Conducting statistical analysis
 - Plotting analysis results
 
-# Usage
-### [DOWNLOAD *R* SCRIPTS](https://github.com/Percud/AA_Comp/archive/master.zip)
+# USAGE
+## AMINO ACID COMPOSITION ANALYSIS
+### [Download *R* scripts](https://github.com/Percud/AA_Comp/archive/master.zip)
 Required *R* packages:
 ```
 - rjson
@@ -21,12 +22,12 @@ Required *R* packages:
 - Biostrings
 - dplyr
 ```
-### 1 - GET ORTHOGROUPS INFORMATION AND FASTA SEQUENCES FROM OrthoDB:
+### 1 - Get orthogroups information and FASTA sequences from OrthoDB:
 Run script [Get_universal_singlecopy_orthogroups.R](https://github.com/Percud/AA_Comp/blob/master/Get_universal_singlecopy_orthogroups.R).
 The program recovers all the orthogroups from the server [OrthoDB](https://www.orthodb.org/) using API. Parameters: *vertebrate level, single copy gene, orthogroup present in 90% of the species*. 
 The program creates a folder named `data` containing three files `.fa` with FASTA sequences (if a directory named `data`already exists it has to be renamed).
 
-### 2 - OBTAIN AA COUNT OF ORTHOGROUPS AND ORGANIZE DATA INTO DATAFRAMES 
+### 2 - Obtain aa count of orthogroups and organize data into dataframes
 Run script [AA_Comp_Analysis.R](https://github.com/Percud/AA_Comp/blob/master/AA_Comp_Analysis.R).
 The necessary *functions* are recovered ([Functions.R](https://github.com/Percud/AA_Comp/blob/master/Functions.R)). Output: `AA_Comp_nofilter` in which  downloaded data are organized; `AA_Comp` that is the filtered dataframe.
 
@@ -46,7 +47,7 @@ The dataset `AA_Comp` contains records of orthologous proteins of the database O
 
 ![IMG1](./Images/Screen%20DF.png)
 
-### STATISTICAL ANLYSIS: ***T-TEST*** AND ***Log2 FOLD CHANGE***
+### 3 - Statistical analysis: ***T-TEST*** and ***Log2 FOLD CHANGE***
 In the same script [2a- AA_Comp_Analysis.R](https://github.com/Percud/AA_Comp/blob/master/2a-%20AA_Comp_Analysis.R), the instruction to perform the **statistical analysis** of data is given. 
 The program creates a new dataframe `Res` with ***pvalue*** (t-test) and ***Log2 fold change*** results, obtained by **pairwise comparisons** between the three different classes.
 
@@ -62,13 +63,13 @@ The program creates a new dataframe `Res` with ***pvalue*** (t-test) and ***Log2
 ![IMG3](./Images/Screen%20Res.png)
 
 ## ANNOTATION AND VISUALIZATION OF RESULTS
-### BAR PLOTS
+### Bar plots
 Run script [Barplot.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/Barplot.R). It creates **bar plots with vertical bars** based on **pairwise comparisons**.
 Bar plots can be exported from *R* as *image* files.
 
 ![IMG5](./Images/Barplot.jpg)
 
-### BOX PLOTS ### 
+### Box plots ### 
 Required *R* packages: 
 ```
 - ggplot2
@@ -80,9 +81,9 @@ Source script [Boxplot.R](https://github.com/Percu### d/AA_Comp/blob/master/Util
 
 ![IMG6](./Images/box.png)
 
-### HEATMAP
+### Heatmap
 
-### VOLCANO PLOTS
+### Volcano plots
 Required *R* packages: 
 ```
 - EnhancedVolcano
@@ -92,7 +93,7 @@ Run script [VolcanoPlot.R](https://github.com/Percud/AA_Comp/blob/master/Utiliti
 
 ![IMG8](./Images/volcano.png)
 
-### MULTIPLE SEQUENCE ALIGNMENT
+### Multiple sequence alignment
 Required *R* packages: 
 ```
 - DECIPHER
