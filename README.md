@@ -83,7 +83,7 @@ Required *R* packages:
 ```
 Source script [Align_shade.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/Align_shade.R). Edit the script writing: the amino acid/amino acids to focus on in `aa`, the `og_id` of the orthogroup to align. Example: 
 ```
-aa="KYN"
+aa="KIN"
 og_id="238395at7742"
 ```
 Run the script. The program takes the best sequences from each class to align and creates four files: multiple alignment is the *PDF* file.
