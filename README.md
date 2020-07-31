@@ -27,7 +27,7 @@ Required *R* packages:
 ### 1 - Get orthogroups information and FASTA sequences from OrthoDB:
 Run script [Get_universal_singlecopy_orthogroups.R](https://github.com/Percud/AA_Comp/blob/master/Get_universal_singlecopy_orthogroups.R).
 The program recovers all the orthogroups from the server [OrthoDB](https://www.orthodb.org/) using API. Parameters: *vertebrate level, single copy gene, orthogroup present in 90% of the species*. 
-The program creates a folder named `data` containing three files `.fa` with FASTA sequences (if a directory named `data`already exists it has to be renamed).
+The program creates a folder named `data` containing three files `.fa` with FASTA sequences (if a directory named `data` already exists it has to be renamed).
 
 ### 2 - Obtain aa count of orthogroups and organize data into dataframes
 Run script [AA_Comp_Analysis.R](https://github.com/Percud/AA_Comp/blob/master/AA_Comp_Analysis.R).
