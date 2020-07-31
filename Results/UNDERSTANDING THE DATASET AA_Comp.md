@@ -12,4 +12,4 @@ The dataset `AA_Comp` contains records of orthologous proteins of the database O
 - name of each AA: count in the sequence.
 
 
-![IMG1](./Images/Screen%20DF.png)
+![IMG1](../Images/Screen%20DF.png)
