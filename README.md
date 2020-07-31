@@ -3,7 +3,7 @@
 
 
 
-# SUMMARY
+# Summary
 This project performs an analysis in *R* of amino acid composition of vertebrate orthologous proteins. 
 We considered three classes: *Actinopterygii, Sauropsida* and *Mammalia*. The program allows to work also with different types of classifications according to research needs. 
 
@@ -14,7 +14,7 @@ The developed scripts are used for:
 - Conducting statistical analysis
 - Plotting analysis results
 
-# USAGE
+# Usage
 ## I. AMINO ACID COMPOSITION ANALYSIS
 ### [Download *R* scripts](https://github.com/Percud/AA_Comp/archive/master.zip)
 Required *R* packages:
