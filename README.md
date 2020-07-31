@@ -1,5 +1,7 @@
 # AA_Comp
-## EVOLUTIONARY CHANGES IN AMINO ACID COMPOSITION OF ORTHOLOGOUS GENES DURING VERTEBRATE EVOLUTION
+## Evolutionary changes in amino acid composition of orthologous genes during vertebrate evolution
+
+
 
 # SUMMARY
 This project performs an analysis in *R* of amino acid composition of vertebrate orthologous proteins. 
