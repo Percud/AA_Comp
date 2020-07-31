@@ -1,8 +1,6 @@
 # AA_Comp
 ## Evolutionary changes in amino acid composition of orthologous genes during vertebrate evolution
 
-
-
 # Summary
 This project performs an analysis in *R* of amino acid composition of vertebrate orthologous proteins. 
 We considered three classes: *Actinopterygii, Sauropsida* and *Mammalia*. The program allows to work also with different types of classifications according to research needs. 
@@ -15,8 +13,10 @@ The developed scripts are used for:
 - Plotting analysis results
 
 # Usage
+
 ## I. AMINO ACID COMPOSITION ANALYSIS
 ### [Download *R* scripts](https://github.com/Percud/AA_Comp/archive/master.zip)
+
 Required *R* packages:
 ```
 - rjson
@@ -25,12 +25,19 @@ Required *R* packages:
 - dplyr
 ```
 ### 1 - Get orthogroups information and FASTA sequences from OrthoDB:
+After setting your directory: 
+```
+source("Get_universal_singlecopy_orthogroups.R")
+```
 Run script [Get_universal_singlecopy_orthogroups.R](https://github.com/Percud/AA_Comp/blob/master/Get_universal_singlecopy_orthogroups.R).
 The program recovers all the orthogroups from the server [OrthoDB](https://www.orthodb.org/) using API. 
 Parameters: *vertebrate level, single copy gene, orthogroup present in 90% of the species*. 
 The program creates a folder named `data` containing three files `.fa` with FASTA sequences (if a directory named `data` already exists it has to be renamed).
 
 ### 2 - Obtain aa count of orthogroups and organize data into dataframes
+```
+source("AA_Comp_Analysis.R")
+```
 Run script [AA_Comp_Analysis.R](https://github.com/Percud/AA_Comp/blob/master/AA_Comp_Analysis.R).
 The necessary *functions* are recovered ([Functions.R](https://github.com/Percud/AA_Comp/blob/master/Functions.R)). Output: `AA_Comp_nofilter` in which  downloaded data are organized, `AA_Comp` that is the filtered dataframe.
 
