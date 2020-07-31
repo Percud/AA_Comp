@@ -44,8 +44,8 @@ The program creates a new dataframe `Res` with ***pvalue*** (t-test) and ***Log2
 
 ## II. ANNOTATION AND VISUALIZATION OF RESULTS
 ### Bar plots
-Run script [Barplot.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/Barplot.R). It creates **bar plots with vertical bars** based on **pairwise comparisons**.
-Bar plots can be exported from *R* as *image* files.
+Run script [Barplot.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/Barplot.R). It creates three **bar plots with vertical bars** based on **pairwise comparisons**.
+Bar plots can be exported from *R* as *image* files, before pressing `enter`.
 
 ![IMG5](./Images/Barplot.jpg)
 
