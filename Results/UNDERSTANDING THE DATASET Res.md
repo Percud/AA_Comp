@@ -7,4 +7,4 @@
 - `Sauropsida/Mammalia/Actinopterygii`: mean of the relative AA count in the orthogroup
 - `.fold_change`: value of pairwise *Log2 fold change*
 
-![IMG3](.//Images/Screen%20Res.png)
+![IMG3](https://github.com/Percud/AA_Comp/blob/master/Images/Screen%20Res.png)
