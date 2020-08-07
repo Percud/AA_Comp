@@ -44,7 +44,7 @@ The necessary *functions* are recovered ([Functions.R](https://github.com/Percud
 [Understanding the dataset ***AA_Comp***](https://github.com/Percud/AA_Comp/blob/master/Results/UNDERSTANDING%20THE%20DATASET%20AA_Comp.md)
 
 ### 3 - Statistical analysis: ***T-TEST*** and ***Log2 FOLD CHANGE***
-In the same script [2a- AA_Comp_Analysis.R](https://github.com/Percud/AA_Comp/blob/master/2a-%20AA_Comp_Analysis.R), the instruction to perform the **statistical analysis** of data is given. 
+In the same script [AA_Comp_Analysis.R](https://github.com/Percud/AA_Comp/blob/master/AA_Comp_Analysis.R), the instruction to perform the **statistical analysis** of data is given. 
 The program creates a new dataframe `Res` with ***pvalue*** (t-test) and ***Log2 fold change*** results, obtained by **pairwise comparisons** between the three different classes.
 
 [Understanding the dataset ***Res***](https://github.com/Percud/AA_Comp/blob/master/Results/UNDERSTANDING%20THE%20DATASET%20Res.md)
