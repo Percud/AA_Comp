@@ -1,16 +1,10 @@
 # AA_Comp
 ## Evolutionary changes in amino acid composition of orthologous genes during vertebrate evolution
 
-# Summary
-This project performs an analysis in *R* of amino acid composition of vertebrate orthologous proteins. 
-We considered three classes: *Actinopterygii, Sauropsida* and *Mammalia*. The program allows to work also with different types of classifications according to research needs. 
+# Project description
+AA_Comp (Amino Acid Composition) is an analysis of the amino acid content of orthologous proteins from vertebrates species. The working hypothesis is that significant differences in amino acid composition among orthologs could be correlated with functional or structural changes that have occurred in different groups of vertebrates after their separation. This work would provide a method for the identification of new protein functions that could be relevant for the evolution of amniotes. We considered three classes of vertebrates: *Actinopterygii, Sauropsida* and *Mammalia*. The scripts allow to work also with different classifications.
 
-The developed scripts are used for:
-
-- Retrieving data
-- Filtering and organizing data
-- Conducting statistical analysis
-- Plotting analysis results
+AA_Comp is composed of two parts. The first part involves 1) acquisition of protein sequences and related information from the database OrthoDB, 2) preparation and cleaning of the dataset, 3) statistical analysis. The second part involves visualization of results through different types of graphical representations.
 
 # Usage
 
