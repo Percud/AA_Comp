@@ -10,6 +10,7 @@ source("Functions.R")
 #Calculate AA composition in orthogroups
 #determine significant changes across vertebrate groups: Sauropsida, Mammalia, Actinopterygii
 
+Tax=list(id=c(8457,40674,7898),name=c("Sauropsida","Mammalia","Actinopterygii"))
 
 AA_Comp_nofilter<-data.frame() # main dataframe
 myList<-list()
