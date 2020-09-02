@@ -3,10 +3,10 @@ The dataset `AA_Comp` contains records of orthologous proteins of the database O
 - `Classification`: group of organisms (Sauropsida-Mammalia-Actinopterygii)
 - `seq_id`: unique sequence identifier
 - `pub_gene_id`: unique gene identifier
-- `pub_og_id`: unique ortholog group identifier
-- `og_name`: ortholog group name
+- `pub_og_id`: unique orthogroup identifier
+- `og_name`: orthogroup name
 - `level`: NCBI taxon identifier of the clade 
-- `description`: short description of the ortholog group
+- `description`: short description of the orthogroup
 - `width`: sequence length
 - `seq_seq`: sequence string, without fasta-header 
 - name of each AA: count in the sequence.
