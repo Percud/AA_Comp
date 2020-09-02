@@ -20,7 +20,7 @@ Required *R* packages:
 ### 1 - Get orthologous group (orthogroup) information and FASTA sequences from OrthoDB:
 After setting your directory: 
 ```
-source("Get_universal_singlecopy_orthogroups.R")
+$ Rscript Get_universal_singlecopy_orthogroups.R
 ```
 Run script [Get_universal_singlecopy_orthogroups.R](https://github.com/Percud/AA_Comp/blob/master/Get_universal_singlecopy_orthogroups.R).
 The program recovers all the orthogroups from the server [OrthoDB](https://www.orthodb.org/) using API. 
@@ -29,7 +29,7 @@ The program creates a folder named `data` containing three files `.fa` with FAST
 
 ### 2 - Obtain amino acid count for each orthogroup and organize data into dataframes
 ```
-source("AA_Comp_Analysis.R")
+$ Rscript AA_Comp_Analysis.R
 ```
 Run script [AA_Comp_Analysis.R](https://github.com/Percud/AA_Comp/blob/master/AA_Comp_Analysis.R).
 The necessary *functions* are recovered ([Functions.R](https://github.com/Percud/AA_Comp/blob/master/Functions.R)). Output: `AA_Comp_nofilter` in which  downloaded data are organized, `AA_Comp` that is the filtered dataframe.
