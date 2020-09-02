@@ -28,7 +28,7 @@ The program recovers all the orthogroups from the server [OrthoDB](https://www.o
 Parameters: *vertebrate level, single copy gene, orthogroup present in 90% of the species*. 
 The program creates a folder named `data` containing three files `.fa` with FASTA sequences (if a directory named `data` already exists it has to be renamed).
 
-### 2 - Obtain aa count of orthogroups and organize data into dataframes
+### 2 - Obtain amino acid count for each orthogroup and organize data into dataframes
 ```
 source("AA_Comp_Analysis.R")
 ```
