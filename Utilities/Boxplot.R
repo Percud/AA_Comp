@@ -10,7 +10,6 @@ library(grid)
 Taxa=c("Actinopterygii","Sauropsida","Mammalia")
 aa = c("A","C","D","E","F","G","H","I","K","L","M","N","R","P","Q","S","T","Y","W","V")
 args = commandArgs(trailingOnly=TRUE)
-args = "100129at7742"
 
 df<-read.csv("AA_Comp.csv",  header=TRUE)
 
