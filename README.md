@@ -18,7 +18,7 @@ Required *R* packages:
 - Biostrings
 - dplyr
 ```
-### 1 - Get orthogroup information and FASTA sequences from OrthoDB:
+### 1 - Get orthologous group (orthogroup) information and FASTA sequences from OrthoDB:
 After setting your directory: 
 ```
 source("Get_universal_singlecopy_orthogroups.R")
