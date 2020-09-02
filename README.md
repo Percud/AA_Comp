@@ -18,7 +18,7 @@ Required *R* packages:
 - Biostrings
 - dplyr
 ```
-### 1 - Get orthogroups information and FASTA sequences from OrthoDB:
+### 1 - Get orthogroup information and FASTA sequences from OrthoDB:
 After setting your directory: 
 ```
 source("Get_universal_singlecopy_orthogroups.R")
@@ -38,14 +38,14 @@ The necessary *functions* are recovered ([Functions.R](https://github.com/Percud
 [Understanding the dataset ***AA_Comp***](https://github.com/Percud/AA_Comp/blob/master/Results/UNDERSTANDING%20THE%20DATASET%20AA_Comp.md)
 
 ### 3 - Statistical analysis: ***T-TEST*** and ***Log2 FOLD CHANGE***
-In the same script [AA_Comp_Analysis.R](https://github.com/Percud/AA_Comp/blob/master/AA_Comp_Analysis.R), the instruction to perform the **statistical analysis** of data is given. 
+In the same script [AA_Comp_Analysis.R](https://github.com/Percud/AA_Comp/blob/master/AA_Comp_Analysis.R), the instruction to perform the **statistical analysis** is given. 
 The program creates a new dataframe `Res` with ***pvalue*** (t-test) and ***Log2 fold change*** results, obtained by **pairwise comparisons** between the three different classes.
 
 [Understanding the dataset ***Res***](https://github.com/Percud/AA_Comp/blob/master/Results/UNDERSTANDING%20THE%20DATASET%20Res.md)
 
 ## II. ANNOTATION AND VISUALIZATION OF RESULTS
 ### Bar plots
-Run script [Barplot.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/Barplot.R). It creates three **bar plots with vertical bars** based on **pairwise comparisons**.
+Run script [Barplot.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/Barplot.R). Three **bar plots with vertical bars** based on **pairwise comparisons** are created.
 Bar plots can be exported from *R* as *image* files, before pressing `enter`.
 
 ![IMG5](./Images/Barplot.jpg)
@@ -58,7 +58,7 @@ Required *R* packages:
 - gridExtra
 - grid
 ```
-Source script [Boxplot.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/Boxplot.R). Edit the script writing the `pub_og_id` of the orthogroup to focus on in `args`. Run the script. The program creates **box plots** of **amino acids distribution** for each class in *PDF* files.
+Source script [Boxplot.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/Boxplot.R). To focus on a specific orthogroup the script has to be modified by writing the `pub_og_id` of interest in `args`. Run the script. The program creates **box plots** of **amino acids distribution** for each class in *PDF* files.
 
 ![IMG6](./Images/box.png)
 
@@ -82,12 +82,12 @@ Required *R* packages:
 - odseq
 - taxizedb
 ```
-Source script [Align_shade.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/Align_shade.R). Edit the script writing: the amino acid/amino acids to focus on in `aa`, the `og_id` of the orthogroup to align. Example: 
+Source script [Align_shade.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/Align_shade.R). The script has to be modified by writing the amino acid/amino acids to focus on in `aa` and the identifier of the orthogroup to align in `og_id`. Example: 
 ```
 aa="KIN"
 og_id="238395at7742"
 ```
-Run the script. The program takes the best sequences from each class to align and creates four files: multiple alignment is the *PDF* file.
+Run the script. The program takes the best sequences from each class and creates four files: multiple alignment is the *PDF* file.
 
 ![IMG7](./Images/align.png)
 
