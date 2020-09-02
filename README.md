@@ -9,7 +9,6 @@ AA_Comp is composed of two parts. The first part involves 1) acquisition of prot
 # Usage
 
 ## I. AMINO ACID COMPOSITION ANALYSIS
-### [Download *R* scripts](https://github.com/Percud/AA_Comp/archive/master.zip)
 
 Required *R* packages:
 ```
