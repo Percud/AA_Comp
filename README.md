@@ -57,7 +57,18 @@ Required *R* packages:
 - gridExtra
 - grid
 ```
-Source script [Boxplot.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/Boxplot.R). To focus on a specific orthogroup the script has to be modified by writing the `pub_og_id` of interest in `args`. Run the script. The program creates **box plots** of **amino acids distribution** for each class in *PDF* files.
+```
+$ Rscript Utilities/Boxplot.R AA_Comp.csv 193525at7742 P
+```
+Arguments required in the command line:
+
+Args[1]= csv name
+
+Args[2]= pub_og_id
+
+Args[3]= aa
+
+if args[1] and args[2] are not specified the program will analyze all orthogroups for each amino acid.
 
 ![IMG6](./Images/box.png)
 
