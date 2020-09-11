@@ -50,7 +50,7 @@ Required *R* packages:
 ```
 $ Rscript Utilities/Barplot.R
 ```
-Three **bar plots with vertical bars** based on **pairwise comparisons** are created. Each bar represents the number of orthogroups with relevant values of t-test and Log2FC for every amino acid.
+Three **bar plots with vertical bars** based on **pairwise comparisons** are created. Each bar represents the number of orthogroups (y axis) with relevant values of t-test and Log2FC for every amino acid (x axis).
 
 ![IMG5](./Images/Barplot.jpg)
 
