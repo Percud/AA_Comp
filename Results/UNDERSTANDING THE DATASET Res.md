@@ -15,4 +15,4 @@
 |4     |305356at7742|Uricase                                              |A  |7.57992137739435e-18      |0.0304423771237756              |8.04208330667319e-22          |13.219512195122 |9.51923076923077 |14.2142857142857|0.473752039909908              |-0.104672661750257                   |-0.578424701660165                 |
 
 
-**Complete dataframe:** [Res.csv](https://github.com/Percud/AA_Comp/blob/master/Res.csv)
+**Download complete dataframe:** [Res.csv](https://github.com/Percud/AA_Comp/blob/master/Res.csv)
