@@ -44,8 +44,15 @@ The program creates a new dataframe `Res` with ***pvalue*** (t-test) and ***Log2
 
 ## II. ANNOTATION AND VISUALIZATION OF RESULTS
 ### Bar plots
-Run script [Barplot.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/Barplot.R). Three **bar plots with vertical bars** based on **pairwise comparisons** are created.
-Bar plots can be exported from *R* as *image* files, before pressing `enter`.
+Required *R* packages:
+```
+-ggplot2
+-dplyr
+```
+```
+$ Rscript Utilities/Barplot.R
+```
+Three **bar plots with vertical bars** based on **pairwise comparisons** are created.
 
 ![IMG5](./Images/Barplot.jpg)
 
@@ -62,11 +69,11 @@ $ Rscript Utilities/Boxplot.R AA_Comp.csv 193525at7742 P
 ```
 Arguments required in the command line:
 
-Args[1]= csv name
+Args[1]= **csv name**
 
-Args[2]= pub_og_id
+Args[2]= **pub_og_id**
 
-Args[3]= aa
+Args[3]= **aa**
 
 if args[1] and args[2] are not specified the program will analyze all orthogroups for each amino acid.
 
@@ -79,8 +86,14 @@ Required *R* packages:
 ```
 - EnhancedVolcano
 - Biostrings
+- dplyr
 ```
-Run script [VolcanoPlot.R](https://github.com/Percud/AA_Comp/blob/master/Utilities/VolcanoPlot.R). The program creates *PDF* files with the **pairwise comparison plot** related to a **single amino acid**.
+```
+$ Rscript Utilities/VolcanoPlot.R
+```
+
+The program creates *PDF* files with the **pairwise comparison plot** related to a **single amino acid**.
+In every single plot it is combined the value of t-test (y axis) and log2FC (x axis), orthogroups with relevant results are located in the side squares of the graphic and are pointed out with red dots.
 
 ![IMG8](./Images/volcano.png)
 
