@@ -38,7 +38,6 @@ Output: `AA_Comp_nofilter` in which  downloaded data are organized, `AA_Comp` th
 In the same script [AA_Comp_Analysis.R](https://github.com/Percud/AA_Comp/blob/master/AA_Comp_Analysis.R), the instruction to perform the **statistical analysis** is given. 
 The program creates a new dataframe `Res` with ***pvalue*** (t-test) and ***Log2 fold change*** results, obtained by **pairwise comparisons** between the three different classes.
 
-**Complete dataframe:** [Res.csv](https://github.com/Percud/AA_Comp/blob/master/Res.csv)
 
 [Understanding the dataset ***Res***](https://github.com/Percud/AA_Comp/blob/master/Results/UNDERSTANDING%20THE%20DATASET%20Res.md)
 
