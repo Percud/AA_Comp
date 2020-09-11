@@ -18,11 +18,10 @@ Required *R* packages:
 - dplyr
 ```
 ### 1 - Get orthologous group (orthogroup) information and FASTA sequences from OrthoDB:
-After setting your directory: 
+ 
 ```
 $ Rscript Get_universal_singlecopy_orthogroups.R
 ```
-Run script [Get_universal_singlecopy_orthogroups.R](https://github.com/Percud/AA_Comp/blob/master/Get_universal_singlecopy_orthogroups.R).
 The program recovers all the orthogroups from the server [OrthoDB](https://www.orthodb.org/) using API. 
 Parameters: *vertebrate level, single copy gene, orthogroup present in 90% of the species*. 
 The program creates a folder named `data` containing three files `.fa` with FASTA sequences (if a directory named `data` already exists it has to be renamed).
@@ -31,8 +30,7 @@ The program creates a folder named `data` containing three files `.fa` with FAST
 ```
 $ Rscript AA_Comp_Analysis.R
 ```
-Run script [AA_Comp_Analysis.R](https://github.com/Percud/AA_Comp/blob/master/AA_Comp_Analysis.R).
-The necessary *functions* are recovered ([Functions.R](https://github.com/Percud/AA_Comp/blob/master/Functions.R)). Output: `AA_Comp_nofilter` in which  downloaded data are organized, `AA_Comp` that is the filtered dataframe.
+Output: `AA_Comp_nofilter` in which  downloaded data are organized, `AA_Comp` that is the filtered dataframe.
 
 [Understanding the dataset ***AA_Comp***](https://github.com/Percud/AA_Comp/blob/master/Results/UNDERSTANDING%20THE%20DATASET%20AA_Comp.md)
 
