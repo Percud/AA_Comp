@@ -6,8 +6,9 @@ Tax=list(id=c(8457,40674,7898),name=c("Sauropsida","Mammalia","Actinopterygii"))
 pvCutoff=1e-16
 FCCutoff=1
 pair_matrix=combn(Tax$name,2) 
+args=commandArgs(trailingOnly=TRUE)
 
-Res<-read.csv("Res.csv", header=TRUE)
+Res<-read.csv(args[1], header=TRUE)
 
 AA = names(AMINO_ACID_CODE[1:20])
 
