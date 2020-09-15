@@ -17,13 +17,13 @@ for(i in 1:ncol(pair_matrix)){
   df<-Res %>% filter(.[m[1]]>=10 | .[m[2]]>=10) %>% 
     filter(.[pv]<=args[2])   %>% 
     group_by(AA) %>% 
-    group_modify (~ summarize(.x,up=sum(.[FC]>=args[3]), down=-sum(.[FC]<=-args[3]))) %>%
+    group_modify (~ summarize(.x,up=sum(.[FC]>=args[3]), down=-sum(.[FC]<=args[4]))) %>%
     arrange(desc(up-abs(down)))
   
   #reshape
   df<-reshape(as.data.frame(df), v.names="count", timevar="var",times = c("up","down"), varying= c("up","down"), direction="long")
   
-  print(ggplot(df, aes(x=reorder(AA,id) ,y=count,fill=var)) + geom_bar(stat="identity") + ggtitle(paste(pv,"<=",args[2],"\n","-",args[3],"<=",FC,">=",args[3])) +
+  print(ggplot(df, aes(x=reorder(AA,id) ,y=count,fill=var)) + geom_bar(stat="identity") + ggtitle(paste(pv,"<=",args[2],"\n",args[4],"<=",FC,">=",args[3])) +
           xlab("AA") + ylab("Orthogroups count"))
   
   readline(prompt=paste(i,"- Press [enter] to continue"))
