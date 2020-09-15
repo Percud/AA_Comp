@@ -15,15 +15,15 @@ for(i in 1:ncol(pair_matrix)){
   FC<-(paste0(pair_matrix[1,i],".",pair_matrix[2,i],".fold_change"))
   
   df<-Res %>% filter(.[m[1]]>=10 | .[m[2]]>=10) %>% 
-    filter(.[pv]<=1e-16)   %>% 
+    filter(.[pv]<=args[2])   %>% 
     group_by(AA) %>% 
-    group_modify (~ summarize(.x,up=sum(.[FC]>=1.5), down=-sum(.[FC]<=-1.5))) %>%
+    group_modify (~ summarize(.x,up=sum(.[FC]>=args[3]), down=-sum(.[FC]<=-args[3]))) %>%
     arrange(desc(up-abs(down)))
   
   #reshape
   df<-reshape(as.data.frame(df), v.names="count", timevar="var",times = c("up","down"), varying= c("up","down"), direction="long")
   
-  print(ggplot(df, aes(x=reorder(AA,id) ,y=count,fill=var)) + geom_bar(stat="identity") + ggtitle(paste(pv,"<=1e-16","\n","-1<=",FC,">=1")) +
+  print(ggplot(df, aes(x=reorder(AA,id) ,y=count,fill=var)) + geom_bar(stat="identity") + ggtitle(paste(pv,"<="args[2],"\n","-"args[3]"<=",FC,">="args[3])) +
           xlab("AA") + ylab("Orthogroups count"))
   
   readline(prompt=paste(i,"- Press [enter] to continue"))
