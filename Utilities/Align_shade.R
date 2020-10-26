@@ -3,8 +3,12 @@ library(msa)
 library(odseq)
 library(taxizedb)
  
-aa="C"
-og_id="238395at7742"
+args=commandArgs(trailingOnly=TRUE)
+
+AA_Comp<-read.csv(args[1], header=TRUE)
+aa<-args[2]
+og_id<-args[3]
+
 max_seq=50
 max_id=0.9 #max id in clusters
 elim=FALSE #eliminate odd seq
