@@ -49,7 +49,7 @@ Required *R* packages:
 -dplyr
 ```
 ```
-$ Rscript Utilities/Barplot.R
+$ Rscript Utilities/Barplot.R csv_name
 ```
 Three **bar plots with vertical bars** based on **pairwise comparisons** are created. Each bar represents the number of orthogroups (y axis) with relevant values of t-test and Log2FC for every amino acid (x axis).
 
@@ -64,17 +64,14 @@ Required *R* packages:
 - grid
 ```
 ```
+$ Rscript Utilities/Boxplot.R csv_name pub_og_id aa
+```
+example
+```
 $ Rscript Utilities/Boxplot.R AA_Comp.csv 193525at7742 P
 ```
-Arguments required in the command line:
 
-Args[1]= **csv name**
-
-Args[2]= **pub_og_id**
-
-Args[3]= **aa**
-
-if args[1] and args[2] are not specified the program will analyze all orthogroups for each amino acid.
+if **pub_og_id** and **aa** are not specified the program will analyze all orthogroups for each amino acid.
 
 ![IMG6](./Images/box.png)
 
@@ -88,7 +85,7 @@ Required *R* packages:
 - dplyr
 ```
 ```
-$ Rscript Utilities/VolcanoPlot.R
+$ Rscript Utilities/VolcanoPlot.R csv_name
 ```
 
 The program creates *PDF* files with the **pairwise comparison plot** related to a **single amino acid**.
