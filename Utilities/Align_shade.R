@@ -17,12 +17,6 @@ set.seed(100)
 aln_out<-paste0(og_id,"_aln")
 tree_out<-paste0(og_id,"_tree")
  
-
-seq=mySelectSeq(AA_Comp,og_id,TRUE)
-#Eliminate seq with 'X' in the sequence
-seq<-seq[-grep("X",seq)]
- 
-
 mySelectSeq<-function(t,og,pass){
   
   m<-as.matrix(t[which(t$pub_og_id==og & t$Seq.pass==pass),c("seq_seq","seq_id","Classification")])
@@ -40,6 +34,10 @@ mySelectClusters<-function(seq,max_id){
   
   return(seq[c[["rownames(inexact)"]]])
 }
+ 
+seq=mySelectSeq(AA_Comp,og_id,TRUE)
+#Eliminate seq with 'X' in the sequence
+seq<-seq[-grep("X",seq)]
  
 
 #get species names according to taxonomy
